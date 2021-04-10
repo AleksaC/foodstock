@@ -1,20 +1,24 @@
 {
-  "name": "openup-project",
-  "version": "0.1.0",
-  "private": true,
+  "name": "openup-backend",
+  "version": "2.2.0",
+  "description": "A Node.js starter for Serverless Framework with ES6 and TypeScript support",
+  "main": "handler.js",
   "scripts": {
-    "test": "sst test",
-    "start": "sst start",
-    "build": "sst build",
-    "deploy": "sst deploy",
-    "remove": "sst remove"
+    "test": "serverless-bundle test"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AnomalyInnovations/serverless-nodejs-starter.git"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.94.1"
+    "aws-sdk": "^2.884.0",
+    "serverless-bundle": "^3.2.0",
+    "serverless-dotenv-plugin": "^2.1.1",
+    "serverless-offline": "^5.3.3"
   },
   "dependencies": {
-    "@serverless-stack/cli": "0.10.8",
-    "@serverless-stack/resources": "0.10.8",
-    "@aws-cdk/core": "1.94.1"
+    "uuid": "^7.0.3"
   }
 }
