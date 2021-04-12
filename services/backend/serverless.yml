@@ -1,4 +1,3 @@
-# NOTE: update this with your service name
 service: openup-backend
 
 # Create an optimized package for our functions 
@@ -47,8 +46,7 @@ functions:
   #         path: hello
   #         method: get
   # Added the basic DynamoDB functionality
-  insert:
-    handler: functions/insert-product.main
+  # Insert not available yet, until a stable solution is created
   update:
     handler: functions/update-product.main
   delete:
