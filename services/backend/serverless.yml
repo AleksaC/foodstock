@@ -28,6 +28,7 @@ provider:
 
 functions:
   # Added the basic DynamoDB functionality
+  # Insert not available yet, until a stable solution is created
   # insert:
   #   handler: functions/insert-product.main
   #   iamRoleStatements:
@@ -45,17 +46,6 @@ functions:
         - dynamodb:UpdateItem
       Resource:
         - !ImportValue '${self:custom.sstApp}-TableArn'
-functions:
-  # hello:
-  #   handler: functions/handler.hello
-  #   events:
-  #     - http:
-  #         path: hello
-  #         method: get
-  # Added the basic DynamoDB functionality
-  # Insert not available yet, until a stable solution is created
-  update:
-    handler: functions/update-product.main
 
   delete:
     handler: functions/delete-product.main
