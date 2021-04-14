@@ -1,4 +1,3 @@
-# NOTE: update this with your service name
 service: openup-backend
 
 # Create an optimized package for our functions 
@@ -46,6 +45,17 @@ functions:
         - dynamodb:UpdateItem
       Resource:
         - !ImportValue '${self:custom.sstApp}-TableArn'
+functions:
+  # hello:
+  #   handler: functions/handler.hello
+  #   events:
+  #     - http:
+  #         path: hello
+  #         method: get
+  # Added the basic DynamoDB functionality
+  # Insert not available yet, until a stable solution is created
+  update:
+    handler: functions/update-product.main
 
   delete:
     handler: functions/delete-product.main
