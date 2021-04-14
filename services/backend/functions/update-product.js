@@ -19,7 +19,7 @@ export const main = handler(async () => {
     const params = {
         TableName: tableName,
         Key: {
-            id: "7d641a24-0dc6-479c-83b0-5226e01f7ae5",
+            id: "14b797fb-87a3-4f11-8fe3-c99e822896a6",
         },
         UpdateExpression: "SET #briefdesc = :brief, #currPrice = :price, #tags = :tags",
         ExpressionAttributeNames: {
