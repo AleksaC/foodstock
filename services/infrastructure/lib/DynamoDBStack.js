@@ -11,6 +11,7 @@ export default class DynamoDBStack extends sst.Stack {
     const table = new dynamodb.Table(this, "Products", {
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       partitionKey: { name: "id", type: dynamodb.AttributeType.STRING },
+      stream: dynamodb.StreamViewType.NEW_AND_OLD_IMAGES
     });
 
     // Cloudformation outputs to be cross-referenced in serverless.yml file.
@@ -25,6 +26,12 @@ export default class DynamoDBStack extends sst.Stack {
     new CfnOutput(this, "TableArn", {
       value: table.tableArn,
       exportName: app.logicalPrefixedName("TableArn"),
+    });
+
+    // Stream ARN
+    new CfnOutput(this, "StreamArn", {
+      value: table.tableStreamArn,
+      exportName: app.logicalPrefixedName("StreamArn")
     });
   }
 }

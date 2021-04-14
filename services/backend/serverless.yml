@@ -9,6 +9,7 @@ plugins:
   - serverless-bundle # Package our functions with Webpack
   - serverless-offline
   - serverless-dotenv-plugin # Load .env as environment variables
+  - serverless-iam-roles-per-function
 
 custom:
   # Our stage is based on what is passed in when running serverless
@@ -17,54 +18,66 @@ custom:
   # Name of the SST app that's deploying our infrastructure
   sstApp: ${self:custom.stage}-infrastructure
 
-
 provider:
   name: aws
-  runtime: nodejs10.x
+  runtime: nodejs12.x
   stage: dev
   region: eu-central-1
   environment:
     tableName: !ImportValue '${self:custom.sstApp}-TableName'
-
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:Scan
-        - dynamodb:Query
-        - dynamodb:GetItem
-        - dynamodb:PutItem
-        - dynamodb:UpdateItem
-        - dynamodb:DeleteItem
-        - dynamodb:DescribeTable
-      Resource:
-        - !ImportValue '${self:custom.sstApp}-TableArn'
+    stage: ${self:custom.stage}
 
 functions:
-  # hello:
-  #   handler: functions/handler.hello
-  #   events:
-  #     - http:
-  #         path: hello
-  #         method: get
   # Added the basic DynamoDB functionality
   insert:
     handler: functions/insert-product.main
+    iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+      Resource:
+        - !ImportValue '${self:custom.sstApp}-TableArn'
+
   update:
     handler: functions/update-product.main
+    iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:UpdateItem
+      Resource:
+        - !ImportValue '${self:custom.sstApp}-TableArn'
+
   delete:
     handler: functions/delete-product.main
+    iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DeleteItem
+      Resource:
+        - !ImportValue '${self:custom.sstApp}-TableArn'
+
   get:
     handler: functions/get-product.main
-  # syncProductsToAlgolia:
-  #   handler: functions/sync-products-to-algolia.handler
-  #   events:
-  #     - stream:
-  #         type: dynamodb
-  #         arn: !GetAtt TableName.StreamArn  # doesn't exist
-  #   iamRoleStatements:
-  #     - Effect: Allow
-  #       Action: ssm:GetParameters
-  #       Resource:
-  #         # the stage is not dynamic
-  #         - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/foodstock/dev/algoliaAppID
-  #         - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/foodstock/dev/algoliaAdminAPIKey
+    iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+      Resource:
+        - !ImportValue '${self:custom.sstApp}-TableArn'
+
+  syncProductsToAlgolia:
+    handler: functions/sync-products-to-algolia.handler
+    events:
+      - stream:
+          type: dynamodb
+          arn: !ImportValue '${self:custom.sstApp}-StreamArn'
+          batchSize: 100
+    iamRoleStatements:
+      - Effect: Allow
+        Action: 
+          - ssm:GetParameters
+          - ssm:GetParametersByPath
+          - ssm:GetParameter
+        Resource:
+          - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/foodstock/${self:custom.stage}/algoliaAppID
+          - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/foodstock/${self:custom.stage}/algoliaAdminKey

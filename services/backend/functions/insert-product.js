@@ -5,11 +5,11 @@ const fs = require("fs");
 
 // const cok = require("C:\\Users\\Luka\\Desktop\\voli_json\\Topla čokolada");
 // const item = cok[0];
-// const tel = require("C:\\Users\\Luka\\Desktop\\voli_json\\Teletina");
-// const item = tel[0];
+const tel = require("C:\\Users\\Luka\\Desktop\\voli_json\\Teletina");
+const item = tel[0];
 let addedItems = [];
-const vino = require("C:\\Users\\Luka\\Desktop\\voli_json\\Vino");
-const item = vino[21];
+// const vino = require("C:\\Users\\Luka\\Desktop\\voli_json\\Vino");
+// const item = vino[21];
 // console.log(item.price_info.current_price.slice(0, -1));
 // let nutriValues = {
 //     energy: item.energy || "",

@@ -11,5 +11,4 @@ export default {
     update: (params) => client.update(params).promise(), // update a single item
     delete: (params) => client.update(params).promise(), // "delete" a single item, not a mistake that I'm calling update
     get: (params) => client.get(params).promise(), // retrieve a single item
-    batchInsert: (params) => client.batchWrite(params).promise(),
 };
