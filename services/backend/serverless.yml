@@ -40,6 +40,11 @@ functions:
 
   update:
     handler: functions/update-product.main
+    events:
+      - http:
+          path: product/{id}
+          method: put
+          authorizer: aws_iam
     iamRoleStatements:
     - Effect: Allow
       Action:
@@ -49,6 +54,11 @@ functions:
 
   delete:
     handler: functions/delete-product.main
+    events:
+      - http:
+          path: product/{id}
+          method: delete
+          authorizer: aws_iam
     iamRoleStatements:
     - Effect: Allow
       Action:
@@ -58,6 +68,11 @@ functions:
 
   get:
     handler: functions/get-product.main
+    events:
+      - http:
+          path: products/{id}
+          method: get
+          authorizer: aws_iam
     iamRoleStatements:
     - Effect: Allow
       Action:
@@ -68,6 +83,8 @@ functions:
   syncProductsToAlgolia:
     handler: functions/sync-products-to-algolia.handler
     events:
+      - http:
+          authorizer: aws_iam
       - stream:
           type: dynamodb
           arn: !ImportValue '${self:custom.sstApp}-StreamArn'
