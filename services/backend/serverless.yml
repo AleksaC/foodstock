@@ -24,6 +24,7 @@ provider:
   region: eu-central-1
   environment:
     tableName: !ImportValue '${self:custom.sstApp}-TableName'
+    usersTableName: !ImportValue '${self:custom.sstApp}-usersTableName'
     stage: ${self:custom.stage}
 
 functions:
