@@ -29,17 +29,25 @@ provider:
 functions:
   # Added the basic DynamoDB functionality
   # Insert not available yet, until a stable solution is created
-  # insert:
-  #   handler: functions/insert-product.main
-  #   iamRoleStatements:
-  #   - Effect: Allow
-  #     Action:
-  #       - dynamodb:PutItem
-  #     Resource:
-  #       - !ImportValue '${self:custom.sstApp}-TableArn'
+  insert:
+    handler: functions/insert-product.main
+    events:
+      - http:
+          path: products
+          method: post
+    iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+      Resource:
+        - !ImportValue '${self:custom.sstApp}-TableArn'
 
   update:
     handler: functions/update-product.main
+    events:
+      - http:
+          path: products/{id}
+          method: put
     iamRoleStatements:
     - Effect: Allow
       Action:
@@ -49,6 +57,10 @@ functions:
 
   delete:
     handler: functions/delete-product.main
+    events:
+      - http:
+          path: products/{id}
+          method: delete
     iamRoleStatements:
     - Effect: Allow
       Action:
@@ -58,6 +70,10 @@ functions:
 
   get:
     handler: functions/get-product.main
+    events:
+      - http:
+          path: products/{id}
+          method: get
     iamRoleStatements:
     - Effect: Allow
       Action:

@@ -1,12 +1,12 @@
 import handler from "../libs/handler";
 import dynamoDB from "../libs/dynamodb";
 
-export const main = handler(async () => {
+export const main = handler(async (event, context) => {
     const { tableName } = process.env;
     const params = {
         TableName: tableName,
         Key: {
-            id: "14b797fb-87a3-4f11-8fe3-c99e822896a6"
+            id: event.pathParameters.productID
         },
         ProjectionExpression: "#name, #category, #price",
         ExpressionAttributeNames: {
@@ -17,5 +17,8 @@ export const main = handler(async () => {
     };
 
     const product = await dynamoDB.get(params);
+    if (!product.Item) {
+        throw new Error("Product not found.");
+    }
     return product.Item;
 });
