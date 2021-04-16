@@ -17,7 +17,6 @@ export const main = handler(async (event, context) => {
     const result = await dynamoDB.scan(params);
     return {
         count: result.Count,
-        items: result.Items,
-        event
+        items: result.Items
     };
 });
