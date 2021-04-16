@@ -4,6 +4,6 @@
         "status": "published"
     },
     "pathParameters": {
-        "productID": "04b8992a-c962-5079-8deb-a68474b1cbf8"
+        "id": "04b8992a-c962-5079-8deb-a68474b1cbf8"
     }
 }
