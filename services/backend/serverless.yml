@@ -1,4 +1,5 @@
 service: openup-backend
+configValidationMode: error
 
 # Create an optimized package for our functions 
 package:
@@ -19,6 +20,7 @@ custom:
 
 provider:
   name: aws
+  lambdaHashingVersion: 20201221
   runtime: nodejs12.x
   stage: dev
   region: eu-central-1
@@ -84,8 +86,6 @@ functions:
   syncProductsToAlgolia:
     handler: functions/sync-products-to-algolia.handler
     events:
-      - http:
-          authorizer: aws_iam
       - stream:
           type: dynamodb
           arn: !ImportValue '${self:custom.sstApp}-StreamArn'
@@ -101,7 +101,7 @@ functions:
           - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/foodstock/${self:custom.stage}/algoliaAdminKey
 
   confirmUserSignup:
-    handler: functions/confirm_user_signup.main
+    handler: functions/confirm_user_signup.handler
     iamRoleStatements:
     - Effect: Allow
       Action:

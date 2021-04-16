@@ -3,6 +3,7 @@ import * as cognito from "@aws-cdk/aws-cognito";
 import * as sst from "@serverless-stack/resources";
 import CognitoAuthRole from "./CognitoAuthRole";
 import * as path from 'path';
+import * as lambda from "@aws-cdk/aws-lambda";
 
 export default class CognitoStack extends sst.Stack {
   constructor(scope, id, props) {
@@ -35,10 +36,10 @@ export default class CognitoStack extends sst.Stack {
       identityPool,
     });
 
-    userpool.addTrigger(cognito.UserPoolOperation.POST_CONFIRMATION, new lambda.Function(this, 'postConfirmationFn', {
+    userPool.addTrigger(cognito.UserPoolOperation.POST_CONFIRMATION, new lambda.Function(this, 'postConfirmationFn', {
     runtime: lambda.Runtime.NODEJS_12_X,
-    handler: 'index.handler',
-    code: lambda.Code.fromAsset(path.join(__dirname, '../../','backend','functions','confirm-user-signup.js' )),
+    handler: 'confirm_user_signup.handler',
+    code: lambda.Code.fromAsset(path.join( '../','backend','functions' )),
   }));
 
     // Export values
