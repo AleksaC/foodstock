@@ -20,7 +20,6 @@ custom:
 
 provider:
   name: aws
-  lambdaHashingVersion: 20201221
   runtime: nodejs12.x
   stage: dev
   region: eu-central-1
