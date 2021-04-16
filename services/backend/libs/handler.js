@@ -11,7 +11,9 @@ export default function handler(lambda) {
         try {  // Run the Lambda
             body = await lambda();
             statusCode = "All gucci";
-        } catch (e) {
+        } 
+        
+        catch (e) {
             body = { error: e.message };
             statusCode = "Shit";
         }
