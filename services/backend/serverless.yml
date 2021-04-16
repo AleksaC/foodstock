@@ -31,24 +31,25 @@ provider:
     stage: ${self:custom.stage}
 
 functions:
-  # Added the basic DynamoDB functionality
-  # Insert not available yet, until a stable solution is created
-  # insert:
-  #   handler: functions/insert-product.main
-  #   iamRoleStatements:
-  #   - Effect: Allow
-  #     Action:
-  #       - dynamodb:PutItem
-  #     Resource:
-  #       - !ImportValue '${self:custom.sstApp}-TableArn'
+  insert:
+    handler: functions/insert-product.main
+    events:
+      - http:
+          path: products
+          method: post
+    iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+      Resource:
+        - !ImportValue '${self:custom.sstApp}-TableArn'
 
   update:
     handler: functions/update-product.main
     events:
       - http:
-          path: product/{id}
+          path: products/{id}
           method: put
-          authorizer: aws_iam
     iamRoleStatements:
     - Effect: Allow
       Action:
@@ -60,9 +61,8 @@ functions:
     handler: functions/delete-product.main
     events:
       - http:
-          path: product/{id}
+          path: products/{id}
           method: delete
-          authorizer: aws_iam
     iamRoleStatements:
     - Effect: Allow
       Action:
@@ -76,13 +76,25 @@ functions:
       - http:
           path: products/{id}
           method: get
-          authorizer: aws_iam
     iamRoleStatements:
     - Effect: Allow
       Action:
         - dynamodb:GetItem
       Resource:
         - !ImportValue '${self:custom.sstApp}-TableArn'
+
+  list:
+    handler: functions/list-all-products.main
+    events:
+      - http:
+          path: products
+          method: get
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Scan
+        Resource:
+          - !ImportValue '${self:custom.sstApp}-TableArn'
 
   syncProductsToAlgolia:
     handler: functions/sync-products-to-algolia.handler

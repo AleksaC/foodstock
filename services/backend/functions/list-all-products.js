@@ -2,25 +2,21 @@ import handler from "../libs/handler";
 import dynamoDB from "../libs/dynamodb";
 
 export const main = handler(async (event, context) => {
-    const data = event.body;
     const tableName = process.env.tableName;
-
     const params = {
         TableName: tableName,
-        Key: {
-            id: event.pathParameters.id,
-        },
-        UpdateExpression: "SET #briefdesc = :brief, #status = :status",
+        ProjectionExpression: "#name, #category, #briefdesc, #status",
         ExpressionAttributeNames: {
+            "#name": "name",
+            "#category": "category",
             "#briefdesc": "briefDescription",
             "#status": "status"
         },
-        ExpressionAttributeValues: {
-            ":brief": data.briefDescription,
-            ":status": data.status
-        }
     };
 
-    await dynamoDB.update(params);
-    return params.Key;
+    const result = await dynamoDB.scan(params);
+    return {
+        count: result.Count,
+        items: result.Items
+    };
 });
