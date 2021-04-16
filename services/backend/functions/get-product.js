@@ -6,7 +6,7 @@ export const main = handler(async (event, context) => {
     const params = {
         TableName: tableName,
         Key: {
-            id: event.pathParameters.productID
+            id: event.pathParameters.id
         },
         ProjectionExpression: "#name, #category, #price",
         ExpressionAttributeNames: {

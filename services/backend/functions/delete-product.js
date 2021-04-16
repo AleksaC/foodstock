@@ -8,7 +8,7 @@ export const main = handler(async (event, context) => {
     const params = {
         TableName: tableName,
         Key: {
-            id: event.pathParameters.productID,
+            id: event.pathParameters.id,
         },
         UpdateExpression: "SET #status = :status",
         ExpressionAttributeNames: {

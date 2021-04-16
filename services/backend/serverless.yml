@@ -27,8 +27,6 @@ provider:
     stage: ${self:custom.stage}
 
 functions:
-  # Added the basic DynamoDB functionality
-  # Insert not available yet, until a stable solution is created
   insert:
     handler: functions/insert-product.main
     events:
@@ -80,6 +78,19 @@ functions:
         - dynamodb:GetItem
       Resource:
         - !ImportValue '${self:custom.sstApp}-TableArn'
+
+  list:
+    handler: functions/list-all-products.main
+    events:
+      - http:
+          path: products
+          method: get
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Scan
+        Resource:
+          - !ImportValue '${self:custom.sstApp}-TableArn'
 
   syncProductsToAlgolia:
     handler: functions/sync-products-to-algolia.handler
