@@ -102,9 +102,9 @@ functions:
 
   confirmUserSignup:
     handler: functions/confirm_user_signup.handler
+    environment:
+        USERS_TABLE: !ImportValue '${self:custom.sstApp}-usersTableName'
     iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:PutItem
-      Resource:
-        - !ImportValue '${self:custom.sstApp}-usersTableArn'
+      - Effect: Allow
+        Action: dynamodb:PutItem
+        Resource: !ImportValue '${self:custom.sstApp}-usersTableArn'

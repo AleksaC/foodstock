@@ -1,21 +1,22 @@
 const DynamoDB = require('aws-sdk/clients/dynamodb');
 const DocumentClient = new DynamoDB.DocumentClient();
 
-const { usersTableName } = process.env;
-
 module.exports.handler = async (event) => {
-    const name = event.request.userAttributes['name'];
-    const user = {
-      id: event.userName,
-      name,
-      createdAt: new Date().toJSON()
-    };
+    if(event.triggerSource == 'PostConfirmation_ConfirmSignUp') {
+      const { usersTableName } = process.env;
 
-    await DocumentClient.put({
-      TableName: usersTableName,
-      Item: user//,
-      //ConditionExpression: 'attribute_not_exists(id)'
-    }).promise();
+      const user = {
+        username: event.userName,
+        createdAt: new Date().toJSON()
+      };
+
+      await DocumentClient.put({
+        TableName: usersTableName,
+        Item: user
+      }).promise();
+
+      return event;
+    }
 
     return event;
 };

@@ -13,7 +13,8 @@ export default class DynamoDBStack extends sst.Stack {
       partitionKey: { name: "id", type: dynamodb.AttributeType.STRING },
       stream: dynamodb.StreamViewType.NEW_AND_OLD_IMAGES
     });
-    //TableName
+
+    // TableName
     new CfnOutput(this, "TableName", {
       value: table.tableName,
       exportName: app.logicalPrefixedName("TableName"),
@@ -31,12 +32,12 @@ export default class DynamoDBStack extends sst.Stack {
       exportName: app.logicalPrefixedName("StreamArn")
     });
 
-    //Users table
+    // Users table
     const tableUsers = new dynamodb.Table(this, "Users", {
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       partitionKey: { name: "username", type: dynamodb.AttributeType.STRING }
     });
-    //table name
+    // Table name
     new CfnOutput(this, "usersTableName", {
       value: tableUsers.tableName,
       exportName: app.logicalPrefixedName("usersTableName"),
@@ -49,7 +50,5 @@ export default class DynamoDBStack extends sst.Stack {
     });
 
     // Cloudformation outputs to be cross-referenced in serverless.yml file.
-
-    
   }
 }
