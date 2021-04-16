@@ -99,3 +99,12 @@ functions:
         Resource:
           - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/foodstock/${self:custom.stage}/algoliaAppID
           - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/foodstock/${self:custom.stage}/algoliaAdminKey
+
+  confirmUserSignup:
+    handler: functions/confirm_user_signup.main
+    iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+      Resource:
+        - !ImportValue '${self:custom.sstApp}-usersTableArn'
