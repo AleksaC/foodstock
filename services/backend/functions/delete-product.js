@@ -4,7 +4,7 @@ import dynamoDB from "../libs/dynamodb";
 export const main = handler(async (event, context) => {
     /* Deleting a product only means it is currently archived,
     it is not ACTUALLY deleted from the database */
-    const tableName = process.env.tableName;
+    const tableName = process.env.productsTableName;
     const params = {
         TableName: tableName,
         Key: {

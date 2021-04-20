@@ -2,35 +2,37 @@ import handler from "../libs/handler";
 import dynamoDB from "../libs/dynamodb";
 import * as uuid from "uuid";
 import namespaces from "../libs/namespaces";
-// const soja = require("C:\\Users\\Luka\\Desktop\\soja.json");
-// const item = soja[1];
 
 export const main = handler(async (event, context) => {
-    const item = event.body;
-    const tableName = process.env.tableName;
-    const productID = uuid.v5(item.product_id, namespaces.voliNamespace); // unique product ID
-    const params = {
-        TableName: tableName,
-        Item: {
-            id: productID,
-            name: item.name,
-            category: item.category_name,
-            briefDescription: item.brief_product_description, // every product has this
-            description: item.description || "",  // some items do not have a longer descr.
-            status: "draft",
-            nutriScore: "A",
-            // images: item.image_urls,
-            nutritionalValues: buildNutriValues(item),
-            currentPrice: buildPriceInfo(item),
-        }
-    };
+    const items = event.body;
+    const tableName = process.env.productsTableName;
+    let processedItems = [];
+    for (const item of items) {
+        const productID = uuid.v5(item.product_id, namespaces.voliNamespace); // unique product ID
+        const params = {
+            TableName: tableName,
+            Item: {
+                id: productID,
+                name: item.name,
+                category: item.category_name,
+                briefDescription: item.brief_product_description, // every product has this
+                status: "draft",
+                nutriScore: "A",
+                // images: item.image_urls,
+                description: buildDescription(item),
+                nutritionalValues: buildNutriValues(item),
+                currentPrice: buildPriceInfo(item),
+            },
+        };
 
-    await dynamoDB.insert(params);
-    return params.Item;
+        await dynamoDB.insert(params);
+        processedItems.push(params.Item);
+    }
+    return processedItems;
 });
 
 /*eslint no-unused-vars: "warn"*/
-/* I should copy these 2 functions to a separate file,
+/* I should copy these 3 functions to a separate file,
 so I can use it in other lambda functions if necessary */
 function buildNutriValues(item) {
     // Form the nutritional values
@@ -73,4 +75,36 @@ function buildPriceInfo(item) {
         regularPrice: regPr
     };
     return price;
+}
+
+function buildDescription(item) {
+    // Form the description attribute
+    let description;
+    if (!item.description) {
+        description = {
+            maintenance: "",
+            countryOfOrigin: "",
+            producer: "",
+            imports: "",
+            ingredients: "",
+            expiryDate: "",
+            allergens: "",
+            alcohol: "",
+            additionalInformation: "",
+        };
+    }
+    else {
+        description = {
+            maintenance: item.description["Čuvanje"],
+            countryOfOrigin: item.description["Zemlja"],
+            producer: item.description["Proizvođač"],
+            imports: item.description["Uvozi"],
+            ingredients: item.description["Sastojci"],
+            expiryDate: item.description["Rok upotrebe"],
+            allergens: item.description["Alergeni"],
+            alcohol: item.description["Alkohol"],
+            additionalInformation: item.description["Dodatne informacije"],
+        };
+    }
+    return description;
 }
