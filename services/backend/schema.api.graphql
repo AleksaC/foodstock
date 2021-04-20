@@ -1,0 +1,80 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query{
+    getAllProducts: [Product!]
+    getProduct(id: ID!): Product
+}
+
+type Mutation {
+    createProduct(input: createProductInput!): Product
+    updateProduct(input: updateProductInput!): Product
+    deleteProduct(input: deleteProductInput!): Product
+}
+
+input createProductInput {
+    briefDescription: String!
+    category: String!
+    name: String!
+    nutriScore: String!
+    status: String!
+}
+
+input updateProductInput {
+    id: ID!
+    briefDescription: String
+    category: String
+    name: String
+    nutriScore: String
+    status: String
+}
+
+input deleteProductInput {
+    id: ID!
+}
+
+type Product {
+    id:ID!
+    briefDescription: String!
+    category: String!
+    currentPrice: currentPrice!
+    description: description!
+    name: String!
+    nutriScore: String!
+    nutritionalValue: nutritionalValue!
+    status: String!
+}
+
+type currentPrice {
+    date: String!
+    discountAmount: String!
+    discountStartState: String!
+    discountEndDate: String!
+    discountPrice: String!
+    regularPrice: String!
+}
+
+type description {
+    allergens: String!
+    alcohol: String!
+    additionalInformation: String!
+    producer: String!
+    expiryDate: String!
+    ingredients: String!
+    imports: String!
+    countryOfOrigin: String!
+    maintenance: String!
+}
+
+type nutritionalValue {
+    carbs: Float!
+    energy: String!
+    fats: Float!
+    proteins: Float!
+    salt: Float!
+    saturatedFats: Float!
+    sugar: Float!
+    fibers: Float!
+}

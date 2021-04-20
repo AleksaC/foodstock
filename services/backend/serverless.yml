@@ -9,13 +9,15 @@ plugins:
   - serverless-bundle # Package our functions with Webpack
   - serverless-offline
   - serverless-iam-roles-per-function
+  - serverless-appsync-plugin
 
 custom:
-  # Our stage is based on what is passed in when running serverless
-  # commands. Or falls back to what we have set in the provider section.
-  stage: ${opt:stage, self:provider.stage}
-  # Name of the SST app that's deploying our infrastructure
-  sstApp: ${self:custom.stage}-infrastructure
+  stage:
+    ${opt:stage, self:provider.stage}
+  sstApp: 
+    ${self:custom.stage}-infrastructure
+  appSync:
+    ${file(serverless.appsync-api.yml)}
 
 provider:
   name: aws
@@ -23,8 +25,8 @@ provider:
   stage: dev
   region: eu-central-1
   environment:
-    productsTableName: !ImportValue '${self:custom.sstApp}-ProductsTableName'
-    usersTableName: !ImportValue '${self:custom.sstApp}-UsersTableName'
+    tableName: !ImportValue '${self:custom.sstApp}-TableName'
+    usersTableName: !ImportValue '${self:custom.sstApp}-usersTableName'
     stage: ${self:custom.stage}
 
 functions:
@@ -39,7 +41,7 @@ functions:
       Action:
         - dynamodb:PutItem
       Resource:
-        - !ImportValue '${self:custom.sstApp}-ProductsTableArn'
+        - !ImportValue '${self:custom.sstApp}-TableArn'
 
   update:
     handler: functions/update-product.main
@@ -52,7 +54,7 @@ functions:
       Action:
         - dynamodb:UpdateItem
       Resource:
-        - !ImportValue '${self:custom.sstApp}-ProductsTableArn'
+        - !ImportValue '${self:custom.sstApp}-TableArn'
 
   delete:
     handler: functions/delete-product.main
@@ -65,7 +67,7 @@ functions:
       Action:
         - dynamodb:DeleteItem
       Resource:
-        - !ImportValue '${self:custom.sstApp}-ProductsTableArn'
+        - !ImportValue '${self:custom.sstApp}-TableArn'
 
   get:
     handler: functions/get-product.main
@@ -78,7 +80,7 @@ functions:
       Action:
         - dynamodb:GetItem
       Resource:
-        - !ImportValue '${self:custom.sstApp}-ProductsTableArn'
+        - !ImportValue '${self:custom.sstApp}-TableArn'
 
   list:
     handler: functions/list-all-products.main
@@ -91,14 +93,14 @@ functions:
         Action:
           - dynamodb:Scan
         Resource:
-          - !ImportValue '${self:custom.sstApp}-ProductsTableArn'
+          - !ImportValue '${self:custom.sstApp}-TableArn'
 
   syncProductsToAlgolia:
     handler: functions/sync-products-to-algolia.handler
     events:
       - stream:
           type: dynamodb
-          arn: !ImportValue '${self:custom.sstApp}-ProductsStreamArn'
+          arn: !ImportValue '${self:custom.sstApp}-StreamArn'
           batchSize: 100
     iamRoleStatements:
       - Effect: Allow
@@ -111,13 +113,13 @@ functions:
           - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/foodstock/${self:custom.stage}/algoliaAdminKey
 
   confirmUserSignup:
-    handler: functions/confirm-user-signup.handler
+    handler: functions/confirm_user_signup.handler
     environment:
-        USERS_TABLE: !ImportValue '${self:custom.sstApp}-UsersTableName'
+        USERS_TABLE: !ImportValue '${self:custom.sstApp}-usersTableName'
     iamRoleStatements:
       - Effect: Allow
         Action: dynamodb:PutItem
-        Resource: !ImportValue '${self:custom.sstApp}-UsersTableArn'
+        Resource: !ImportValue '${self:custom.sstApp}-usersTableArn'
 
 resources:
   Resources:
