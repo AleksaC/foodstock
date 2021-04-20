@@ -3,7 +3,7 @@ import dynamoDB from "../libs/dynamodb";
 
 export const main = handler(async (event, context) => {
     const data = event.body;
-    const tableName = process.env.tableName;
+    const tableName = process.env.productsTableName;
 
     const params = {
         TableName: tableName,

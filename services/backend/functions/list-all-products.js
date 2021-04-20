@@ -2,7 +2,7 @@ import handler from "../libs/handler";
 import dynamoDB from "../libs/dynamodb";
 
 export const main = handler(async (event, context) => {
-    const tableName = process.env.tableName;
+    const tableName = process.env.productsTableName;
     const params = {
         TableName: tableName,
         ProjectionExpression: "#name, #category, #briefdesc, #status",

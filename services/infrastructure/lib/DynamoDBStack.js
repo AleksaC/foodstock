@@ -3,52 +3,57 @@ import * as dynamodb from "@aws-cdk/aws-dynamodb";
 import * as sst from "@serverless-stack/resources";
 
 export default class DynamoDBStack extends sst.Stack {
-  constructor(scope, id, props) {
-    super(scope, id, props);
+    constructor(scope, id, props) {
+        super(scope, id, props);
 
-    const app = this.node.root;
+        const app = this.node.root;
 
-    const table = new dynamodb.Table(this, "Products", {
-      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-      partitionKey: { name: "id", type: dynamodb.AttributeType.STRING },
-      stream: dynamodb.StreamViewType.NEW_AND_OLD_IMAGES
-    });
+        // Products table
+        const table = new dynamodb.Table(this, "Products", {
+            billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+            partitionKey: { name: "id", type: dynamodb.AttributeType.STRING },
+            stream: dynamodb.StreamViewType.NEW_AND_OLD_IMAGES,
+        });
 
-    // TableName
-    new CfnOutput(this, "TableName", {
-      value: table.tableName,
-      exportName: app.logicalPrefixedName("TableName"),
-    });
+        // Users table
+        const tableUsers = new dynamodb.Table(this, "Users", {
+            billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+            partitionKey: {
+                name: "username",
+                type: dynamodb.AttributeType.STRING,
+            },
+        });
 
-    // Table ARN
-    new CfnOutput(this, "TableArn", {
-      value: table.tableArn,
-      exportName: app.logicalPrefixedName("TableArn"),
-    });
+        // Cloudformation outputs to be cross-referenced in serverless.yml file.
 
-    // Stream ARN
-    new CfnOutput(this, "StreamArn", {
-      value: table.tableStreamArn,
-      exportName: app.logicalPrefixedName("StreamArn")
-    });
+        // Products Table Name
+        new CfnOutput(this, "ProductsTableName", {
+            value: table.tableName,
+            exportName: app.logicalPrefixedName("ProductsTableName"),
+        });
 
-    // Users table
-    const tableUsers = new dynamodb.Table(this, "Users", {
-      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-      partitionKey: { name: "username", type: dynamodb.AttributeType.STRING }
-    });
-    // Table name
-    new CfnOutput(this, "usersTableName", {
-      value: tableUsers.tableName,
-      exportName: app.logicalPrefixedName("usersTableName"),
-    });
+        // Products Table ARN
+        new CfnOutput(this, "ProductsTableArn", {
+            value: table.tableArn,
+            exportName: app.logicalPrefixedName("ProductsTableArn"),
+        });
 
-    // Table ARN
-    new CfnOutput(this, "usersTableArn", {
-      value: tableUsers.tableArn,
-      exportName: app.logicalPrefixedName("usersTableArn"),
-    });
+        // Products Stream ARN
+        new CfnOutput(this, "ProductsStreamArn", {
+            value: table.tableStreamArn,
+            exportName: app.logicalPrefixedName("ProductsStreamArn"),
+        });
 
-    // Cloudformation outputs to be cross-referenced in serverless.yml file.
-  }
+        // Users Table Name
+        new CfnOutput(this, "UsersTableName", {
+            value: tableUsers.tableName,
+            exportName: app.logicalPrefixedName("UsersTableName"),
+        });
+
+        // Users Table ARN
+        new CfnOutput(this, "UsersTableArn", {
+            value: tableUsers.tableArn,
+            exportName: app.logicalPrefixedName("UsersTableArn"),
+        });
+    }
 }

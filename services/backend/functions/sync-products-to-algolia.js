@@ -1,13 +1,11 @@
 const DynamoDB = require('aws-sdk/clients/dynamodb');
-import initUsersIndex from "../libs/algolia";
+import initProductsIndex from "../libs/algolia";
 const middy = require('@middy/core');
 const ssm = require('@middy/ssm');
-// https://github.com/theburningmonk/appsyncmasterclass-backend/blob/main/functions/sync-users-to-algolia.js
 
 const stage = process.env.stage;
 export const handler = middy(async (event, context) => {
-    const index = await initUsersIndex(context.ALGOLIA_APP_ID,
-        context.ALGOLIA_ADMIN_KEY, stage);
+    const index = await initProductsIndex(context.ALGOLIA_APP_ID, context.ALGOLIA_ADMIN_KEY, stage);
     for (const record of event.Records) {
         if (record.eventName === "INSERT" || record.eventName === "MODIFY") {
             const product = DynamoDB.Converter.unmarshall(record.dynamodb.NewImage);
