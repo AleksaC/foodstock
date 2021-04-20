@@ -7,12 +7,6 @@ export const main = handler(async (event, context) => {
         TableName: tableName,
         Key: {
             id: event.pathParameters.id
-        },
-        ProjectionExpression: "#name, #category, #price",
-        ExpressionAttributeNames: {
-            "#name": "name",
-            "#category": "category",
-            "#price": "currentPrice"
         }
     };
 

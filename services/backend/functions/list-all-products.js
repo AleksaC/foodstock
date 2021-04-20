@@ -4,19 +4,9 @@ import dynamoDB from "../libs/dynamodb";
 export const main = handler(async (event, context) => {
     const tableName = process.env.productsTableName;
     const params = {
-        TableName: tableName,
-        ProjectionExpression: "#name, #category, #briefdesc, #status",
-        ExpressionAttributeNames: {
-            "#name": "name",
-            "#category": "category",
-            "#briefdesc": "briefDescription",
-            "#status": "status"
-        },
+        TableName: tableName
     };
 
     const result = await dynamoDB.scan(params);
-    return {
-        count: result.Count,
-        items: result.Items
-    };
+    return result.Items;
 });

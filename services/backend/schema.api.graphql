@@ -43,14 +43,14 @@ type Product {
     description: description!
     name: String!
     nutriScore: String!
-    nutritionalValue: nutritionalValue!
+    nutritionalValues: nutritionalValue!
     status: String!
 }
 
 type currentPrice {
     date: String!
     discountAmount: String!
-    discountStartState: String!
+    discountStartDate: String!
     discountEndDate: String!
     discountPrice: String!
     regularPrice: String!
