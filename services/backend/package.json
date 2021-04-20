@@ -15,6 +15,7 @@
   "devDependencies": {
     "aws-sdk": "^2.884.0",
     "serverless": "^2.4.0",
+    "serverless-appsync-plugin": "^1.10.0",
     "serverless-bundle": "^3.2.0",
     "serverless-offline": "^5.3.3"
   },
@@ -22,6 +23,8 @@
     "@middy/core": "^2.0.1",
     "@middy/ssm": "^2.0.1",
     "algoliasearch": "^4.8.6",
+    "graphql": "^15.5.0",
+    "graphql-tag-ts": "^0.1.16",
     "serverless-iam-roles-per-function": "^3.1.0",
     "uuid": "^7.0.3"
   }
