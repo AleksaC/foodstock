@@ -1,17 +1,25 @@
-schema {
-    query: Query
-    mutation: Mutation
-}
-
-type Query{
-    getAllProducts: [Product!]
-    getProduct(id: ID!): Product
-}
-
 type Mutation {
     createProduct(input: createProductInput!): Product
     updateProduct(input: updateProductInput!): Product
     deleteProduct(input: deleteProductInput!): Product
+}
+
+type Product {
+    id: ID!
+    briefDescription: String!
+    category: String!
+    currentPrice: currentPrice!
+    description: description!
+    name: String!
+    nutriScore: String!
+    nutritionalValues: nutritionalValue!
+    status: String!
+    images: [String]!
+}
+
+type Query {
+    getAllProducts: [Product!]
+    getProduct(id: ID!): Product
 }
 
 input createProductInput {
@@ -22,31 +30,6 @@ input createProductInput {
     status: String!
 }
 
-input updateProductInput {
-    id: ID!
-    briefDescription: String
-    category: String
-    name: String
-    nutriScore: String
-    status: String
-}
-
-input deleteProductInput {
-    id: ID!
-}
-
-type Product {
-    id:ID!
-    briefDescription: String!
-    category: String!
-    currentPrice: currentPrice!
-    description: description!
-    name: String!
-    nutriScore: String!
-    nutritionalValues: nutritionalValue!
-    status: String!
-}
-
 type currentPrice {
     date: String!
     discountAmount: String!
@@ -54,6 +37,19 @@ type currentPrice {
     discountEndDate: String!
     discountPrice: String!
     regularPrice: String!
+}
+
+input currentPriceInput {
+    date: String
+    discountAmount: String
+    discountStartDate: String
+    discountEndDate: String
+    discountPrice: String
+    regularPrice: String
+}
+
+input deleteProductInput {
+    id: ID!
 }
 
 type description {
@@ -68,6 +64,18 @@ type description {
     maintenance: String!
 }
 
+input descriptionInput {
+    allergens: String
+    alcohol: String
+    additionalInformation: String
+    producer: String
+    expiryDate: String
+    ingredients: String
+    imports: String
+    countryOfOrigin: String
+    maintenance: String
+}
+
 type nutritionalValue {
     carbs: Float!
     energy: String!
@@ -77,4 +85,32 @@ type nutritionalValue {
     saturatedFats: Float!
     sugar: Float!
     fibers: Float!
+}
+
+input nutritionalValuesInput {
+    carbs: Float
+    energy: String
+    fats: Float
+    proteins: Float
+    salt: Float
+    saturatedFats: Float
+    sugar: Float
+    fibers: Float
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+input updateProductInput {
+    id: ID!
+    briefDescription: String
+    category: String
+    name: String
+    nutriScore: String
+    status: String
+    currentPrice: currentPriceInput
+    description: descriptionInput
+    nutritionalValues: nutritionalValuesInput
 }

@@ -1,0 +1,514 @@
+[
+    {
+        "product_id": "797",
+        "name": "Dorina čokolada napolitanka 290 g Kraš",
+        "brief_product_description": "Mliječna čokolada sa kakao punjenjem (34%) i vafel proizvodom (13%)",
+        "energy": "2066/494",
+        "fats": 27.9,
+        "saturated_fats": 15.6,
+        "proteins": 7.8,
+        "carbs": 52.0,
+        "sugar": 39.8,
+        "fiber": 0.0,
+        "salt": 0.29,
+        "description": {
+            "Čuvanje": "Čuvati na suvom i hladnom mjestu.",
+            "Zemlja": "Hrvatska",
+            "Proizvođač": "Kraš d.d. Zagreb",
+            "Uvozi": "Voli trade doo Podgorica",
+            "Sastojci": "Šećer, vafel proizvod 13% (šećer, pšenično brašno, biljna mast (palma, shea), kakaov prah smanjene masti, punomasno sojino brašno, čokolada 1%, sol, regulator kiselosti E500, aroma), obrano mlijeko u prahu, punomasno mlijeko u prahu, kakaov maslac, biljna mast (palma), kakaova masa, sirutka u prahu (mlijeko), kakaov prah smanjene masti  1,5%, mliječna mast, emulgator sojin lecitin, arome",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mliječna mast, sojin lecitin, lješnik",
+            "Alkohol": "-",
+            "Dodatne informacije": "Mliječna čokolada sadrži min. 30% kakaovih dijelova, min. 17% suve materije mlijeka."
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/132501/132501_1.jpg",
+            "https://voli.me/storage/images/products/132501/132501_2.jpg"
+        ],
+        "price_info": {
+            "current_price": "2.99€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "957",
+        "name": "Eurokrem blok 45 g Swisslion Takovo",
+        "brief_product_description": "Eurokrem blok",
+        "energy": "2219/530.5",
+        "fats": 28.5,
+        "saturated_fats": 22.0,
+        "proteins": 5.5,
+        "carbs": 63.0,
+        "sugar": 59.5,
+        "fiber": 0.0,
+        "salt": 0.18,
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu na temperaturi do 22°C.",
+            "Zemlja": "Bosna i Hercegovina",
+            "Proizvođač": "Swisslion d.o.o.",
+            "Uvozi": "Swisslion Takovo doo Podgorica",
+            "Sastojci": "Mlijeko, lješnik, kakao",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mlijeko, lješnik, kakao",
+            "Alkohol": "-",
+            "Dodatne informacije": "-"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/1365/1365_1.jpg",
+            "https://voli.me/storage/images/products/1365/1365_2.jpg"
+        ],
+        "price_info": {
+            "current_price": "0.25€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "1394",
+        "name": "Mliječni krem blok sa lješnikom 40 g Crnagoracoop",
+        "brief_product_description": "Mliječni krem blok",
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu na temperaturi do 22°C.",
+            "Zemlja": "Crna Gora",
+            "Proizvođač": "Crnagoracoop NB d.o.o.",
+            "Uvozi": "-",
+            "Sastojci": "Šećer, biljna mast, mlijeko u prahu, kakao u prahu, pasta od lješnika, emulgator: lecitin, arome: vanila",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Gluten",
+            "Alkohol": "-",
+            "Dodatne informacije": "-"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/14958/14958_1.jpg",
+            "https://voli.me/storage/images/products/14958/14958_2.jpg"
+        ],
+        "price_info": {
+            "current_price": "0.35€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "1474",
+        "name": "Galeb premium crna čokolada sa 80% kakao djelova 100 g Pionir",
+        "brief_product_description": "Crna čokolada sa 80% kakao djelova",
+        "energy": "2314/558",
+        "fats": 40.6,
+        "saturated_fats": 23.7,
+        "proteins": 11.2,
+        "carbs": 31.6,
+        "sugar": 19.8,
+        "fiber": 10.4,
+        "salt": 0.81,
+        "description": {
+            "Čuvanje": "Čuvati na suvom, tamnom mjestu zaštićenom od direktne sunčeve svjetlosti.",
+            "Zemlja": "Srbija",
+            "Proizvođač": "Pionir DOO Beograd",
+            "Uvozi": "Voli trade doo Podgorica",
+            "Sastojci": "Kakao masa, kakao prah sa redukovanim sadržajem masti, kakao maslac, šećer, aroma.",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mlijeko, gluten,jezgrasto voće",
+            "Alkohol": "-",
+            "Dodatne informacije": "-"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/153082/153082_2.jpg",
+            "https://voli.me/storage/images/products/153082/153082_1.jpg"
+        ],
+        "price_info": {
+            "current_price": "1.39€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "1487",
+        "name": "Original mliječna čokolada 220 g Banat",
+        "brief_product_description": "Mliječna čokolada",
+        "energy": "2192/524",
+        "fats": 28.0,
+        "saturated_fats": 19.0,
+        "proteins": 6.0,
+        "carbs": 62.0,
+        "sugar": 53.0,
+        "fiber": 0.0,
+        "salt": 0.0,
+        "description": {
+            "Čuvanje": "Čuvati na suvom i hladnom mjestu.",
+            "Zemlja": "Srbija",
+            "Proizvođač": "Swisslion d.o.o.",
+            "Uvozi": "Swisslion Takovo doo Podgorica",
+            "Sastojci": "Šećer, kakao maslac, punomasno mlijeko u prahu (21%), kakao prah sa redukovanim sadržajem kakao maslaca, kakao masa, emulgatori (sojin lecitin, E476), aroma. Mliječna čokoladna masa sadrži ukupne suve materije kakao delova min. 30%.",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mlijeko, soja",
+            "Alkohol": "-",
+            "Dodatne informacije": "-"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/154156/154156_2.jpg",
+            "https://voli.me/storage/images/products/154156/154156_1.jpg"
+        ],
+        "price_info": {
+            "current_price": "1.79€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "301",
+        "name": "Mliječna čokolada Dorina 250 g Kraš",
+        "brief_product_description": "Mliječna čokolada",
+        "energy": "2260/540",
+        "fats": 32.0,
+        "saturated_fats": 19.0,
+        "proteins": 6.7,
+        "carbs": 56.0,
+        "sugar": 55.0,
+        "fiber": 0.0,
+        "salt": 0.2,
+        "description": {
+            "Čuvanje": "Čuvati na suvom i hladnom mjestu.",
+            "Zemlja": "Hrvatska",
+            "Proizvođač": "Kraš d.d. Zagreb",
+            "Uvozi": "Voli trade doo Podgorica",
+            "Sastojci": "Šećer, kakao-maslac, punomasno mlijeko u prahu, kakao-masa, surutka u prahu (mlijeko), emulgator sojin lecitin, aroma. Mliječna čokolada sadrži min. 31% ukupne suve materije kakao-djelova, min 18%. suve materije mlijeka.",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "-",
+            "Alkohol": "-",
+            "Dodatne informacije": "Može da sadrži lješnike, bademe, kikiriki i gluten."
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/113895/113895_2.jpg",
+            "https://voli.me/storage/images/products/113895/113895_1.jpg",
+            "https://voli.me/storage/images/products/113895/113895_3.jpg"
+        ],
+        "price_info": {
+            "current_price": "2.35€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "1977",
+        "name": "Dorina Čokolada sa rižom 75g Kraš",
+        "brief_product_description": "Mliječna čokolada sa rižom",
+        "energy": "2182/521",
+        "fats": 28.0,
+        "saturated_fats": 16.0,
+        "proteins": 7.8,
+        "carbs": 59.0,
+        "sugar": 37.0,
+        "fiber": 0.0,
+        "salt": 0.37,
+        "description": {
+            "Čuvanje": "Čuvati na suvom i hladnom mjestu.",
+            "Zemlja": "Hrvatska",
+            "Proizvođač": "Kraš d.d. Zagreb",
+            "Uvozi": "Voli trade doo Podgorica",
+            "Sastojci": "Šećer, kakaov maslac, obrano mlijeko u prahu, ekspandirana riža 11%, kakaova masa, surutka u prahu (mlijeko), mliječna mast, emulgator sojin lecitin, aroma.",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "-",
+            "Alkohol": "-",
+            "Dodatne informacije": "Može sadržati lješnike i gluten."
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/16702/16702_1.jpg",
+            "https://voli.me/storage/images/products/16702/16702_3.jpg",
+            "https://voli.me/storage/images/products/16702/16702_2.jpg"
+        ],
+        "discount_info": {
+            "discount": "13.33%",
+            "duration": "15.04.-30.04."
+        },
+        "price_info": {
+            "discounted_price": "0.65€",
+            "old_price": "0.75€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "1978",
+        "name": "Dorina čokolada sa rižom 220 g Kraš",
+        "brief_product_description": "Mliječna čokolada sa rižom",
+        "energy": "2186/522",
+        "fats": 28.0,
+        "saturated_fats": 16.0,
+        "proteins": 7.6,
+        "carbs": 59.0,
+        "sugar": 48.0,
+        "fiber": 0.0,
+        "salt": 0.24,
+        "description": {
+            "Čuvanje": "Čuvati na suvom i hladnom mjestu.",
+            "Zemlja": "Hrvatska",
+            "Proizvođač": "Kraš d.d. Zagreb",
+            "Uvozi": "Voli trade doo Podgorica",
+            "Sastojci": "Šećer, kakaov maslac, obrano mleko u prahu, ekspandirana riža , kakaova masa, surutka u prahu, mlečna mast, emulgator sojin lecitin,aroma",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "-",
+            "Alkohol": "-",
+            "Dodatne informacije": "Može sadržati lješnike i gluten."
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/16703/16703_3.jpg",
+            "https://voli.me/storage/images/products/16703/16703_2.jpg",
+            "https://voli.me/storage/images/products/16703/16703_1.jpg"
+        ],
+        "discount_info": {
+            "discount": "9.57%",
+            "duration": "15.04.-30.04."
+        },
+        "price_info": {
+            "discounted_price": "1.89€",
+            "old_price": "2.09€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "1980",
+        "name": "Dorina mliječna čokolada 80 g Kraš",
+        "brief_product_description": "Mliječna čokolada",
+        "energy": "2395/570",
+        "fats": 32.9,
+        "saturated_fats": 20.9,
+        "proteins": 6.4,
+        "carbs": 54.2,
+        "sugar": 51.5,
+        "fiber": 0.0,
+        "salt": 0.25,
+        "description": {
+            "Čuvanje": "Čuvati na suvom i hladnom mjestu.",
+            "Zemlja": "Hrvatska",
+            "Proizvođač": "Kraš d.d. Zagreb",
+            "Uvozi": "Voli trade doo Podgorica",
+            "Sastojci": "Šećer,kakaov maslac,punomasno mlijeko u prahu,kakaova masa,mlijeko u prahu,sojin lecitin,aroma",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "-",
+            "Alkohol": "-",
+            "Dodatne informacije": "Može da sadrži lješnike, bademe, kikiriki i gluten."
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/16706/16706_4.jpg",
+            "https://voli.me/storage/images/products/16706/16706_2.jpg",
+            "https://voli.me/storage/images/products/16706/16706_5.jpg",
+            "https://voli.me/storage/images/products/16706/16706_1.jpg",
+            "https://voli.me/storage/images/products/16706/16706_3.jpg"
+        ],
+        "discount_info": {
+            "discount": "13.33%",
+            "duration": "15.04.-30.04."
+        },
+        "price_info": {
+            "discounted_price": "0.65€",
+            "old_price": "0.75€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "2129",
+        "name": "Kinder čokolada T8 100 g Ferrero",
+        "brief_product_description": "Mliječna čokolada",
+        "energy": "2360/566",
+        "fats": 35.0,
+        "saturated_fats": 22.6,
+        "proteins": 8.7,
+        "carbs": 53.5,
+        "sugar": 53.5,
+        "fiber": 0.0,
+        "salt": 0.31,
+        "description": {
+            "Čuvanje": "Čuvati na suvom i hladnom mjestu.",
+            "Zemlja": "Njemačka",
+            "Proizvođač": "Ferrero oHG mbH Njemačka",
+            "Uvozi": "Dmd Delta doo Podgorica",
+            "Sastojci": "Mliječna čokolada, punomasno mlijeko u prahu, kakaov maslac, kakaova masa, emulgator, lecitini, vanilin, šećer, obrano mlijeko u prahu, palmino ulje,anhidrovana mliječna mast",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mlijeko, soja",
+            "Alkohol": "-",
+            "Dodatne informacije": "-"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/kinder-chocolate-t8-100-g-ferrero/hxob-2020-11-24-09-51-00-17002_1.jpg"
+        ],
+        "discount_info": {
+            "discount": "14.39%",
+            "duration": "10.04.-05.05."
+        },
+        "price_info": {
+            "discounted_price": "1.19€",
+            "old_price": "1.39€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "2130",
+        "name": "Kinder čokolada T4 50 g Ferrero",
+        "brief_product_description": "Mliječna čokolada",
+        "energy": "2360/566",
+        "fats": 35.0,
+        "saturated_fats": 22.6,
+        "proteins": 8.7,
+        "carbs": 53.5,
+        "sugar": 53.5,
+        "fiber": 0.0,
+        "salt": 0.31,
+        "description": {
+            "Čuvanje": "Čuvati na suvom i hladnom mjestu.",
+            "Zemlja": "Njemačka",
+            "Proizvođač": "Ferrero oHG mbH Njemačka",
+            "Uvozi": "Dmd Delta doo Podgorica",
+            "Sastojci": "Mliječna čokolada, punomasno mlijeko u prahu, kakaov maslac, kakaova masa, emulgator, lecitini, vanilin, šećer, obrano mlijeko u prahu, palmino ulje,anhidrovana mliječna mast",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mlijeko, soja",
+            "Alkohol": "-",
+            "Dodatne informacije": "-"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/17003/17003_1.jpg",
+            "https://voli.me/storage/images/products/17003/17003_2.jpg"
+        ],
+        "discount_info": {
+            "discount": "13.33%",
+            "duration": "10.04.-05.05."
+        },
+        "price_info": {
+            "discounted_price": "0.65€",
+            "old_price": "0.75€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "2142",
+        "name": "Kinder schokobons 125 g Ferrero",
+        "brief_product_description": "Mliječni desert",
+        "energy": "2401/138",
+        "fats": 36.6,
+        "saturated_fats": 21.2,
+        "proteins": 8.3,
+        "carbs": 52.5,
+        "sugar": 52.2,
+        "fiber": 0.0,
+        "salt": 0.28,
+        "description": {
+            "Čuvanje": "Čuvati na suvom, hladnom i tamnom mjestu.",
+            "Zemlja": "Belgija",
+            "Proizvođač": "Ferrero Ardennes",
+            "Uvozi": "Dmd Delta doo Podgorica",
+            "Sastojci": "Mliječna čokolada 50%, šećer, obrano  mlijeko u prahu (12.5%), palmino ulje, lješnici (5.8%), anhidrovana mliječna  mast, sredstva za glaziranje, glukozni sirup",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mlijeko, soja, lješnici",
+            "Alkohol": "-",
+            "Dodatne informacije": "-"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/17019/17019_1.jpg",
+            "https://voli.me/storage/images/products/17019/17019_2.jpg"
+        ],
+        "price_info": {
+            "current_price": "2.19€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "2594",
+        "name": "Najljepše želje čokolada 200 g Soko Štark",
+        "brief_product_description": "Mliječna čokolada",
+        "energy": "2255/540",
+        "fats": 32.0,
+        "saturated_fats": 19.0,
+        "proteins": 9.0,
+        "carbs": 54.0,
+        "sugar": 53.0,
+        "fiber": 0.0,
+        "salt": 0.29,
+        "description": {
+            "Čuvanje": "Čuvati na suvom, tamnom mjestu zaštićenom od direktne sunčeve svjetlosti.",
+            "Zemlja": "Srbija",
+            "Proizvođač": "Antlatic Štark doo Beograd",
+            "Uvozi": "Ataco doo Podgorica",
+            "Sastojci": "Šećer,mlijeko, sojin lecitin, kakao",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mlijeko, soja",
+            "Alkohol": "-",
+            "Dodatne informacije": "Može da sadrži tragove kikirikija,jezgrastog voća,glutena."
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/1835/1835_1.jpg",
+            "https://voli.me/storage/images/products/1835/1835_2.jpg"
+        ],
+        "price_info": {
+            "current_price": "2.29€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "2595",
+        "name": "Najljepše želje mliječna čokolada 250 g Soko Štark",
+        "brief_product_description": "Mliječna čokolada sa visokim sadržajem mlijeka",
+        "energy": "2255/540",
+        "fats": 32.0,
+        "saturated_fats": 19.0,
+        "proteins": 9.0,
+        "carbs": 54.0,
+        "sugar": 53.0,
+        "fiber": 0.0,
+        "salt": 0.9,
+        "description": {
+            "Čuvanje": "Čuvati na suvom, tamnom mjestu zaštićenom od direktne sunčeve svjetlosti.",
+            "Zemlja": "Srbija",
+            "Proizvođač": "Antlatic Štark doo Beograd",
+            "Uvozi": "Ataco doo Podgorica",
+            "Sastojci": "Šećer, punomasno mlijeko u prahu, kakao maslac, kakao masa, obrano mlijeko u prahu,emulgator aroma",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mlijeko, soja",
+            "Alkohol": "-",
+            "Dodatne informacije": "Može da sadrži tragove kikirikija,jezgrastog voća,glutena."
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/1836/1836_1.jpg",
+            "https://voli.me/storage/images/products/1836/1836_2.jpg",
+            "https://voli.me/storage/images/products/1836/1836_3.jpg"
+        ],
+        "price_info": {
+            "current_price": "2.99€"
+        },
+        "category_name": "Čokolade"
+    },
+    {
+        "product_id": "2816",
+        "name": "Milka strawberry 300 g",
+        "brief_product_description": "Mliječna čokolada sa alpskim mlijekom punjena sa ukusom jagoda",
+        "energy": "2310/554",
+        "fats": 34.0,
+        "saturated_fats": 19.0,
+        "proteins": 4.5,
+        "carbs": 57.0,
+        "sugar": 57.0,
+        "fiber": 1.0,
+        "salt": 0.53,
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu, zaštićeno od toplote.",
+            "Zemlja": "Austrija",
+            "Proizvođač": "Mondelez Producion",
+            "Uvozi": "D Way doo Podgorica",
+            "Sastojci": "Šecer, palmino ulje, surutka/ u prahu(iz mlijeka), kakaov maslac, obrano mlijeko u prahu, kakaova masa, mliječna mast, koncentrisani sok jagode, emulgator(sojin lecitin), pasta lješnika,  jagode u prahu, limunska kiselina, arome",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Mlijeko, surutka u prahu, sojin lecitin",
+            "Alkohol": "-",
+            "Dodatne informacije": "Može da sadrži tragove drugih orašastih plodova."
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/22165/22165_1.jpg",
+            "https://voli.me/storage/images/products/22165/22165_6.jpg",
+            "https://voli.me/storage/images/products/22165/22165_5.jpg",
+            "https://voli.me/storage/images/products/22165/22165_2.jpg",
+            "https://voli.me/storage/images/products/22165/22165_4.jpg",
+            "https://voli.me/storage/images/products/22165/22165_3.jpg"
+        ],
+        "discount_info": {
+            "discount": "36.52%",
+            "duration": "02.04.-30.04."
+        },
+        "price_info": {
+            "discounted_price": "2.19€",
+            "old_price": "3.45€"
+        },
+        "category_name": "Čokolade"
+    }
+]
