@@ -3,10 +3,11 @@ import dynamoDB from "../libs/dynamodb";
 
 export const main = handler(async (event, context) => {
     const tableName = process.env.productsTableName;
+    console.log(event);
     const params = {
         TableName: tableName,
         Key: {
-            id: event.pathParameters.id
+            id: event.arguments.id  // this is where the ID resides in the event object
         }
     };
 

@@ -1,37 +1,14 @@
-import handler from "../libs/handler";
-import dynamoDB from "../libs/dynamodb";
-import * as uuid from "uuid";
-import namespaces from "../libs/namespaces";
-
-export const main = handler(async (event, context) => {
-    const item = event.body;
-    console.log(event);
-    const tableName = process.env.productsTableName;
-    const productID = uuid.v5(item.product_id, namespaces.voliNamespace); // unique product ID
-    const params = {
-        TableName: tableName,
-        Item: {
-            id: productID,
-            name: item.name,
-            category: item.category_name,
-            briefDescription: item.brief_product_description, // every product has this
-            status: "draft",
-            nutriScore: "A",
-            images: item.image_urls,
-            description: buildDescription(item),
-            nutritionalValues: buildNutriValues(item),
-            currentPrice: buildPriceInfo(item),
-        },
-        // maybe add ReturnValues: "ALL_NEW"
-    };
-
-    await dynamoDB.insert(params);
-    return params.Item;
+const fs = require('fs');
+const files = fs.readdirSync("products"); // folder products must be in the same directory as this file
+const uuid = require("uuid");
+const tableName = "dev-infrastructure-dynamodb-Products229621C6-HOUEPHVSHL34";
+const voliNamespace = "db03ea1b-1f65-4882-85ed-5b73310b089a";
+const AWS = require("aws-sdk");
+AWS.config.update({
+    region: "eu-central-1",
 });
+const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
-/*eslint no-unused-vars: "warn"*/
-/* I should copy these 3 functions to a separate file,
-so I can use it in other lambda functions if necessary */
 function buildNutriValues(item) {
     // Form the nutritional values
     let nutriValues = {
@@ -42,7 +19,7 @@ function buildNutriValues(item) {
         carbs: item.carbs || 0,
         sugar: item.sugar || 0,
         fibers: item.fiber || 0,
-        salt: item.salt || 0
+        salt: item.salt || 0,
     };
     return nutriValues;
 }
@@ -58,8 +35,7 @@ function buildPriceInfo(item) {
         dscED = dates[1]; // end date of discount
         dscPr = item.price_info.discounted_price.slice(0, -1); // remove the euro sign
         regPr = item.price_info.old_price.slice(0, -1);
-    }
-    else {
+    } else {
         dscAmt = dscSD = dscED = dscPr = "";
         regPr = item.price_info.current_price.slice(0, -1);
     }
@@ -70,7 +46,7 @@ function buildPriceInfo(item) {
         discountStartDate: dscSD,
         discountEndDate: dscED,
         discountPrice: dscPr,
-        regularPrice: regPr
+        regularPrice: regPr,
     };
     return price;
 }
@@ -90,8 +66,7 @@ function buildDescription(item) {
             alcohol: "",
             additionalInformation: "",
         };
-    }
-    else {
+    } else {
         description = {
             maintenance: item.description["Čuvanje"],
             countryOfOrigin: item.description["Zemlja"],
@@ -106,3 +81,43 @@ function buildDescription(item) {
     }
     return description;
 }
+
+const path = __dirname + "\\products\\";  // this is where the JSON files live
+
+const main = async () => {
+    for (const file of files) {
+        const products = require(path + file);  // get the array in the JSON file
+        let allParams = [];
+
+        for (const product of products) {
+            let productID = uuid.v5(product.product_id, voliNamespace);
+            let params = {
+                PutRequest: {
+                    Item: {
+                        id: productID,
+                        name: product.name,
+                        category: product.category_name,
+                        briefDescription: product.brief_product_description, // every product has this
+                        status: "published",
+                        nutriScore: "A",
+                        images: product.image_urls || [], // just in case
+                        description: buildDescription(product),
+                        nutritionalValues: buildNutriValues(product),
+                        currentPrice: buildPriceInfo(product),
+                    }
+                }
+            };
+            allParams.push(params);
+        }
+        // added all the 25 products to the params list, now batch write that bitch
+        let batch = {
+            RequestItems: {}
+        };
+        batch.RequestItems[tableName] = allParams;
+        const res = await dynamoDB.batchWrite(batch).promise();
+        // in the later stages, I have to actually process these, now I'm adding 40 items so it shouldn't break
+        console.log("Any unprocessed items?", res.UnprocessedItems);
+    }
+}
+
+main().then(x => console.log("All done!"));
