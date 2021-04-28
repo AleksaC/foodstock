@@ -5,6 +5,7 @@ userPoolConfig:
   awsRegion: eu-central-1
   defaultAction: ALLOW
   userPoolId: !Ref CognitoUserPool
+
 mappingTemplates:
   - type: Query
     field: getAllProducts
@@ -16,6 +17,12 @@ mappingTemplates:
     dataSource: productSource
     request: false
     response: false
+  - type: Query
+    field: search
+    dataSource: searchSource
+    request: false
+    response: false
+    
   - type: Mutation
     field: createProduct
     dataSource: createProductSource
@@ -31,6 +38,7 @@ mappingTemplates:
     dataSource: deleteProductSource
     request: false
     response: false
+
 dataSources:
   - type: AWS_LAMBDA
     name: allProductsSource
@@ -52,3 +60,7 @@ dataSources:
     name: deleteProductSource
     config:
       functionName: delete
+  - type: AWS_LAMBDA
+    name: searchSource
+    config:
+      functionName: search

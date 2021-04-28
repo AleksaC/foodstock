@@ -20,6 +20,17 @@ type Product {
 type Query {
     getAllProducts: [Product!]
     getProduct(id: ID!): Product
+    search(
+        query: String!
+        # didn't add search modes
+        limit: Int!  # how many records per page
+        nextToken: String  # a token used for pagination
+    ): SearchResultsPage!
+}
+
+type SearchResultsPage {
+    results: [Product!]
+    nextToken: String  # for pagination
 }
 
 input createProductInput {
