@@ -27,6 +27,7 @@ provider:
   environment:
     productsTableName: !ImportValue '${self:custom.sstApp}-ProductsTableName'
     usersTableName: !ImportValue '${self:custom.sstApp}-UsersTableName'
+    productHistoryTableName: !ImportValue '${self:custom.sstApp}-ProductHistoryTableName'
     stage: ${self:custom.stage}
 
 functions:
@@ -124,7 +125,7 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:PutItem
-        Resource: arn:aws:dynamodb:eu-central-1:233257714052:table/ProductHistory
+        Resource: !ImportValue '${self:custom.sstApp}-ProductHistoryTableArn'
     
 resources:
   Resources:

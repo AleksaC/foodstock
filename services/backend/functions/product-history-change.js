@@ -2,7 +2,7 @@ const DynamoDBSdk = require("aws-sdk/clients/dynamodb");
 import dynamoDB from "../libs/dynamodb";
 
 export const handler = async (event) => {
-    const tableName = "ProductHistory";
+    const tableName = process.env.productHistoryTableName;
     for (const record of event.Records) {
         let newImage, oldImage;
         let params = {
