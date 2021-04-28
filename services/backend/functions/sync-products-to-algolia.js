@@ -10,6 +10,7 @@ export const handler = middy(async (event, context) => {
         if (record.eventName === "INSERT" || record.eventName === "MODIFY") {
             const product = DynamoDB.Converter.unmarshall(record.dynamodb.NewImage);
             product.objectID = product.id;
+            // delete product.id;
             await index.saveObjects([product]);
         } else if (record.eventName === "REMOVE") {
             const product = DynamoDB.Converter.unmarshall(record.dynamodb.OldImage);

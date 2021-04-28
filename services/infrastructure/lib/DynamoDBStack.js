@@ -24,6 +24,19 @@ export default class DynamoDBStack extends sst.Stack {
             },
         });
 
+        // Product changes table (i.e. the history of the changes)
+        const tableHistory = new dynamodb.Table(this, "ProductHistory", {
+            billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+            partitionKey: {
+                name: "id",
+                type: dynamodb.AttributeType.STRING,
+            },
+            sortKey: {
+                name: "timestamp",
+                type: dynamodb.AttributeType.STRING,
+            },
+        });
+
         // Cloudformation outputs to be cross-referenced in serverless.yml file.
 
         // Products Table Name
@@ -54,6 +67,18 @@ export default class DynamoDBStack extends sst.Stack {
         new CfnOutput(this, "UsersTableArn", {
             value: tableUsers.tableArn,
             exportName: app.logicalPrefixedName("UsersTableArn"),
+        });
+
+        // Product History Table Name
+        new CfnOutput(this, "ProductHistoryTableName", {
+            value: tableHistory.tableName,
+            exportName: app.logicalPrefixedName("ProductHistoryTableName"),
+        });
+
+        // // Product History Table ARN
+        new CfnOutput(this, "ProductHistoryTableArn", {
+            value: tableHistory.tableArn,
+            exportName: app.logicalPrefixedName("ProductHistoryTableArn"),
         });
     }
 }

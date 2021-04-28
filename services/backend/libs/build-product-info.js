@@ -1,15 +1,3 @@
-const fs = require("fs");
-const files = fs.readdirSync("products"); // folder products must be in the same directory as this file
-const uuid = require("uuid");
-const tableName = "dev-infrastructure-dynamodb-Products229621C6-HOUEPHVSHL34";
-const voliNamespace = "db03ea1b-1f65-4882-85ed-5b73310b089a";
-
-const AWS = require("aws-sdk");
-AWS.config.update({
-    region: "eu-central-1",
-});
-const dynamoDB = new AWS.DynamoDB.DocumentClient();
-
 function buildNutriValues(item) {
     // Form the nutritional values
     let nutriValues = {
@@ -83,42 +71,8 @@ function buildDescription(item) {
     return description;
 }
 
-const path = __dirname + "\\products\\"; // this is where the JSON files live
-
-const main = async () => {
-    for (const file of files) {
-        const products = require(path + file); // get the array in the JSON file
-        let allParams = [];
-
-        for (const product of products) {
-            let productID = uuid.v5(product.product_id, voliNamespace);
-            let params = {
-                PutRequest: {
-                    Item: {
-                        id: productID,
-                        name: product.name,
-                        category: product.category_name,
-                        briefDescription: product.brief_product_description, // every product has this
-                        status: "published",
-                        nutriScore: "A",
-                        images: product.image_urls || [], // just in case
-                        description: buildDescription(product),
-                        nutritionalValues: buildNutriValues(product),
-                        currentPrice: buildPrice(product),
-                    },
-                },
-            };
-            allParams.push(params);
-        }
-        // added all the 25 products to the params list, now batch write that bitch
-        let batch = {
-            RequestItems: {},
-        };
-        batch.RequestItems[tableName] = allParams;
-        const res = await dynamoDB.batchWrite(batch).promise();
-        // in the later stages, I have to actually process these, now I'm adding 40 items so it shouldn't break
-        console.log("Any unprocessed items?", res.UnprocessedItems);
-    }
+export default {
+    buildDescription,
+    buildNutriValues,
+    buildPrice
 };
-
-main().then((x) => console.log("All done!"));

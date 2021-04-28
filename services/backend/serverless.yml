@@ -27,6 +27,7 @@ provider:
   environment:
     productsTableName: !ImportValue '${self:custom.sstApp}-ProductsTableName'
     usersTableName: !ImportValue '${self:custom.sstApp}-UsersTableName'
+    productHistoryTableName: !ImportValue '${self:custom.sstApp}-ProductHistoryTableName'
     stage: ${self:custom.stage}
 
 functions:
@@ -82,6 +83,7 @@ functions:
           type: dynamodb
           arn: !ImportValue '${self:custom.sstApp}-ProductsStreamArn'
           batchSize: 100
+          startingPosition: LATEST
     iamRoleStatements:
       - Effect: Allow
         Action: 
@@ -94,13 +96,25 @@ functions:
 
   confirmUserSignup:
     handler: functions/confirm-user-signup.handler
-    environment:
-        USERS_TABLE: !ImportValue '${self:custom.sstApp}-UsersTableName'
     iamRoleStatements:
       - Effect: Allow
         Action: dynamodb:PutItem
         Resource: !ImportValue '${self:custom.sstApp}-UsersTableArn'
 
+  productHistoryChange:
+    handler: functions/product-history-change.handler
+    events:
+      - stream:
+          type: dynamodb
+          arn: !ImportValue '${self:custom.sstApp}-ProductsStreamArn'
+          batchSize: 100
+          startingPosition: LATEST
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+        Resource: !ImportValue '${self:custom.sstApp}-ProductHistoryTableArn'
+    
 resources:
   Resources:
     CognitoUserPool:
