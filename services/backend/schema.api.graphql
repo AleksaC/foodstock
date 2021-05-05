@@ -3,6 +3,20 @@ type Mutation {
     updateProduct(input: updateProductInput!): Product
     deleteProduct(input: deleteProductInput!): Product
 }
+# TODO:
+
+# Consider adding a `!` in, for example, nutritionalValuesInput, 
+# descriptionInput, and in the updateProductInput itself
+# I think it's better, just as a layer of security, because if some 
+# attribute is not sent, ESPECIALLY the object attributes (price, description,
+# nutriValues), then the product in the database will be malformed
+
+# Maybe while testing, leave that some fields can be null, but later on,
+# perhaps change everything to be non-null (?)
+
+# Maybe also make all the queries and mutations for products return Product! instead of Product
+
+# Make the barcode (and categories?) a list down the line
 
 type Product {
     id: ID!
@@ -12,9 +26,13 @@ type Product {
     description: description!
     name: String!
     nutriScore: String!
-    nutritionalValues: nutritionalValue!
+    nutritionalValues: nutritionalValues!
     status: String!
     images: [String]!
+    store: String!
+    storeID: String!
+    productStoreID: String!
+    barcode: String!
 }
 
 type Query {
@@ -39,6 +57,11 @@ input createProductInput {
     name: String!
     nutriScore: String!
     status: String!
+    # images: ???
+    currentPrice: currentPriceInput!
+    description: descriptionInput!
+    nutritionalValues: nutritionalValuesInput!
+    barcode: String!
 }
 
 type currentPrice {
@@ -51,12 +74,12 @@ type currentPrice {
 }
 
 input currentPriceInput {
-    date: String
-    discountAmount: String
-    discountStartDate: String
-    discountEndDate: String
-    discountPrice: String
-    regularPrice: String
+    date: String!  # is it necessary?
+    discountAmount: String!
+    discountStartDate: String!
+    discountEndDate: String!
+    discountPrice: String!
+    regularPrice: String!
 }
 
 input deleteProductInput {
@@ -76,18 +99,18 @@ type description {
 }
 
 input descriptionInput {
-    allergens: String
-    alcohol: String
-    additionalInformation: String
-    producer: String
-    expiryDate: String
-    ingredients: String
-    imports: String
-    countryOfOrigin: String
-    maintenance: String
+    allergens: String!
+    alcohol: String!
+    additionalInformation: String!
+    producer: String!
+    expiryDate: String!
+    ingredients: String!
+    imports: String!
+    countryOfOrigin: String!
+    maintenance: String!
 }
 
-type nutritionalValue {
+type nutritionalValues {
     carbs: Float!
     energy: String!
     fats: Float!
@@ -99,14 +122,14 @@ type nutritionalValue {
 }
 
 input nutritionalValuesInput {
-    carbs: Float
-    energy: String
-    fats: Float
-    proteins: Float
-    salt: Float
-    saturatedFats: Float
-    sugar: Float
-    fibers: Float
+    carbs: Float!
+    energy: String!
+    fats: Float!
+    proteins: Float!
+    salt: Float!
+    saturatedFats: Float!
+    sugar: Float!
+    fibers: Float!
 }
 
 schema {
@@ -124,4 +147,10 @@ input updateProductInput {
     currentPrice: currentPriceInput
     description: descriptionInput
     nutritionalValues: nutritionalValuesInput
+    # Don't think I need these below, maybe only the barcode
+    # images: WhatToDoWithThis
+    #? store: String
+    #? storeID: String
+    #? productStoreID: Don'tThinkINeedThis
+    barcode: String
 }

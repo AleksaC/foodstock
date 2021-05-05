@@ -1,0 +1,345 @@
+[
+    {
+        "product_id": "1210",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Nar",
+        "brief_product_description": "Nar",
+        "price_info": {
+            "current_price": "2.19€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/143733/143733_1.jpg"
+        ]
+    },
+    {
+        "product_id": "1499",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Jabuka Story",
+        "brief_product_description": "Svježe jabuke",
+        "price_info": {
+            "current_price": "1.49€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/154375/154375_1.jpg"
+        ]
+    },
+    {
+        "product_id": "2570",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Avokado",
+        "brief_product_description": "Avokado",
+        "price_info": {
+            "current_price": "2.99€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/179410/179410_1.jpg"
+        ]
+    },
+    {
+        "product_id": "2578",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Mango",
+        "brief_product_description": "Mango",
+        "price_info": {
+            "current_price": "1.99€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/179681/179681_2.jpg",
+            "https://voli.me/storage/images/products/179681/179681_2.png",
+            "https://voli.me/storage/images/products/mango/sarv-2021-02-15-10-32-15-mango.jpg"
+        ]
+    },
+    {
+        "product_id": "3155",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Banana",
+        "brief_product_description": "Banana Cavendish",
+        "price_info": {
+            "current_price": "1.39€"
+        },
+        "description": {
+            "Čuvanje": "-",
+            "Zemlja": "Ekvador",
+            "Proizvođač": "-",
+            "Uvozi": "-",
+            "Sastojci": "-",
+            "Rok upotrebe": "-",
+            "Alergeni": "-",
+            "Alkohol": "-",
+            "Dodatne informacije": "-"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/36985/36985_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3154",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Ananas",
+        "brief_product_description": "Svježi ananas",
+        "price_info": {
+            "current_price": "1.89€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/36983/36983_1.jpg"
+        ]
+    },
+    {
+        "product_id": "386",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Urma svježa 550 g",
+        "brief_product_description": "Urma svježa",
+        "price_info": {
+            "current_price": "1.49€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/118150/118150_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3168",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Kivi",
+        "brief_product_description": "Kivi",
+        "price_info": {
+            "current_price": "3.19€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/37007/37007_1.jpg"
+        ]
+    },
+    {
+        "product_id": "1964",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Urma Međol Jumbo",
+        "brief_product_description": "Urma svježa",
+        "price_info": {
+            "current_price": "12.99€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/167000/167000_1.jpg"
+        ]
+    },
+    {
+        "product_id": "1351",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Ananas extra slatki",
+        "brief_product_description": "Svježi ananas",
+        "price_info": {
+            "current_price": "7.39€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/148424/148424_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3172",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Limun",
+        "brief_product_description": "Limun",
+        "price_info": {
+            "current_price": "1.39€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/37015/37015_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3178",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Pomorandža",
+        "brief_product_description": "Pomoranđža",
+        "price_info": {
+            "current_price": "1.19€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/37031/37031_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3157",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Grejpfruit crveni",
+        "brief_product_description": "Grejpfruit crveni",
+        "price_info": {
+            "current_price": "1.19€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/36990/36990_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3171",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Limes",
+        "brief_product_description": "Limes",
+        "price_info": {
+            "current_price": "6.29€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/37014/37014_1.jpg"
+        ]
+    },
+    {
+        "product_id": "881",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Jabuka Ajdared Poljska",
+        "brief_product_description": "Svježe jabuke",
+        "price_info": {
+            "current_price": "0.95€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/135148/135148_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3165",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Jabuka Zlatni delišes",
+        "brief_product_description": "Svježe jabuke",
+        "price_info": {
+            "current_price": "1.29€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/37003/37003_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3164",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Jabuka Greni smit",
+        "brief_product_description": "Svježe jabuke",
+        "price_info": {
+            "current_price": "1.19€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/37002/37002_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3170",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Kruška viljamovka",
+        "brief_product_description": "Svježa kruška",
+        "price_info": {
+            "discounted_price": "1.75€",
+            "old_price": "2.09€"
+        },
+        "discount_info": {
+            "discount": "16.27%",
+            "duration": "28.04.-08.05."
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/37011/37011_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3162",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Jabuka Delišes crvena",
+        "brief_product_description": "Svježe jabuke",
+        "price_info": {
+            "current_price": "1.29€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/36999/36999_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3203",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Kruška Abata",
+        "brief_product_description": "Svježa kruška",
+        "price_info": {
+            "current_price": "2.59€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/38539/38539_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3163",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Jabuka Crimson snow",
+        "brief_product_description": "Svježe jabuke",
+        "price_info": {
+            "current_price": "1.69€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/37000/37000_1.jpg"
+        ]
+    },
+    {
+        "product_id": "2426",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Jabuka Pink lady",
+        "brief_product_description": "Svježe jabuke",
+        "price_info": {
+            "current_price": "2.19€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/175486/175486_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3220",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Šljiva Angeleno",
+        "brief_product_description": "Šljiva",
+        "price_info": {
+            "current_price": "4.79€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/39512/39512_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3159",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Grožđe crno",
+        "brief_product_description": "Grožđe crno",
+        "price_info": {
+            "current_price": "6.29€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/36993/36993_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3158",
+        "store": "Voli",
+        "category_name": "Voće",
+        "name": "Grozđe bijelo",
+        "brief_product_description": "Grozđe bijelo",
+        "price_info": {
+            "current_price": "6.79€"
+        },
+        "image_urls": [
+            "https://voli.me/storage/images/products/36991/36991_1.jpg"
+        ]
+    }
+]
