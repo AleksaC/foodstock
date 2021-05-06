@@ -138,7 +138,8 @@ const main = async () => {
                         id: productID,
                         name: product.name,
                         category: product.category_name,
-                        briefDescription: product.brief_product_description || "",                        status: "published",
+                        briefDescription: product.brief_product_description || "",
+                        status: "published",
                         nutriScore: "E",
                         images: product.image_urls || [], // just in case
                         // new
