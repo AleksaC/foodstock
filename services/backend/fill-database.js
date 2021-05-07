@@ -1,12 +1,13 @@
-const fs = require("fs");
-const files = fs.readdirSync("products"); // folder products must be in the same directory as this file
-const uuid = require("uuid");
-const constants = require("./libs/fill-db-constants");
+/* const fs = require("fs");
+const files = fs.readdirSync("products"); */ // folder products must be in the same directory as this file
+import * as uuid from "uuid";
+import constants from "./libs/fill-db-constants";
+import AWS from "aws-sdk";
 
-const AWS = require("aws-sdk");
 AWS.config.update({
     region: "eu-central-1",
 });
+
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 function buildNutriValues(product) {
@@ -21,6 +22,7 @@ function buildNutriValues(product) {
         fibers: product.fiber || 0,
         salt: product.salt || 0,
     };
+    
     return nutriValues;
 }
 
@@ -122,9 +124,53 @@ function formatDate(date) {
     return formatted;
 }
 
-const path = __dirname + "\\products\\"; // this is where the JSON files live
+// const path = __dirname + "\\products\\"; // this is where the JSON files live
 
-const main = async () => {
+export const writeProducts = async (products) => {
+
+    let allParams = [];
+
+    for (const product of products) {
+        let productID = uuid.v4();
+        const storeNamespace = parseStore(product.store);
+
+        // deepmerge
+        // Update vec postojeceg proizvoda
+
+        let params = {
+            PutRequest: {
+                Item: {
+                    id: productID,
+                    name: product.name,
+                    category: product.category_name,
+                    briefDescription: product.brief_product_description || "",
+                    status: "published",
+                    nutriScore: "E",
+                    images: product.image_urls || [], // just in case
+                    // new
+                    store: product.store.toLowerCase(),
+                    storeID: storeNamespace, // returns the namespace of the store (acts as the ID)
+                    productStoreID: uuid.v5(product.product_id.toString(), storeNamespace), // for synchronizing changes later
+                    barcode: parseBarcode(product.barcodes),
+                    // 
+                    description: buildDescription(product),
+                    nutritionalValues: buildNutriValues(product),
+                    currentPrice: buildPrice(product),
+                },
+            },
+        };
+        allParams.push(params);
+    }
+
+    // added all the 25 products to the params list, now batch write
+    let batch = {
+        RequestItems: {},
+    };
+    batch.RequestItems["TestTable"] = allParams;
+    const res = await dynamoDB.batchWrite(batch).promise();
+}
+
+/* const main = async () => {
     for (const file of files) {
         const products = require(path + file); // get the array in the JSON file
         let allParams = [];
@@ -165,6 +211,6 @@ const main = async () => {
         // I have to process the unprocessed items later on
         console.log("Any unprocessed items?", res.UnprocessedItems);
     }
-};
+}; */
 
-main().then((x) => console.log("All done!"));
+// main().then((x) => console.log("All done!"));

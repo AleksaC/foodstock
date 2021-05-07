@@ -18,6 +18,8 @@ custom:
   # Name of the SST app that's deploying our infrastructure
   sstApp: ${self:custom.stage}-infrastructure
   appSync: ${file(serverless.appsync-api.yml)}
+  bundle:
+    linting: false
 
 provider:
   name: aws
@@ -25,9 +27,9 @@ provider:
   stage: dev
   region: eu-central-1
   environment:
-    productsTableName: !ImportValue '${self:custom.sstApp}-ProductsTableName'
-    usersTableName: !ImportValue '${self:custom.sstApp}-UsersTableName'
-    productHistoryTableName: !ImportValue '${self:custom.sstApp}-ProductHistoryTableName'
+  #   productsTableName: !ImportValue '${self:custom.sstApp}-ProductsTableName'
+  #   usersTableName: !ImportValue '${self:custom.sstApp}-UsersTableName'
+  #   productHistoryTableName: !ImportValue '${self:custom.sstApp}-ProductHistoryTableName'
     stage: ${self:custom.stage}
 
 functions:
@@ -126,7 +128,19 @@ functions:
         Action:
           - dynamodb:PutItem
         Resource: !ImportValue '${self:custom.sstApp}-ProductHistoryTableArn'
-    
+
+  idea-scraper:
+    handler: functions/idea-scraper.main
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+          - dynamodb:UpdateItem
+        Resource: 'arn:aws:dynamodb:eu-central-1:323751276496:table/TestTable'
+    # events:
+    #   - schedule:
+    #       rate(1 days)
+
 resources:
   Resources:
     CognitoUserPool:
