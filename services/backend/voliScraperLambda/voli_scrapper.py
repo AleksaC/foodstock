@@ -242,7 +242,7 @@ def main(event, context):
     # Surpress logging
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
     chromedriver_location = "/opt/bin/chromedriver"
-    driver = webdriver.Chrome(chromedriver_location, chrome_options = options)
+    driver = webdriver.Chrome(chromedriver_location, options = options)
 
     driver.set_page_load_timeout(10) 
 
