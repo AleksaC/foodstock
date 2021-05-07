@@ -1,0 +1,14 @@
+service: voli-scraper-lambda
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: eu-central-1
+  timeout: 900
+
+functions:
+  voli_scrapper:
+    handler: voli_scrapper.main
+    layers:
+      - ${cf:selenium-layer-dev.SeleniumLayerExport}
+      - ${cf:selenium-layer-dev.ChromedriverLayerExport}
