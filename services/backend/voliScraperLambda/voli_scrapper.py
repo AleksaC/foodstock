@@ -230,7 +230,8 @@ def main(event, context):
     options = Options()
     # options.headless = True
 
-    binary_location = "opt/headless-chromium"
+    binary_location = "/opt/bin/headless-chromium"
+
     options.binary_location = binary_location
 
     options.add_argument("--headless")
@@ -240,7 +241,7 @@ def main(event, context):
 
     # Surpress logging
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    chromedriver_location = "opt/chromedriver"
+    chromedriver_location = "/opt/bin/chromedriver"
     driver = webdriver.Chrome(chromedriver_location, chrome_options = options)
 
     driver.set_page_load_timeout(10) 
