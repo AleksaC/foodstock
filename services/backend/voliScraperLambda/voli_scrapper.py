@@ -228,14 +228,19 @@ def write_batch(product_objects, category_name, counter):
 
 def main(event, context):
     options = Options()
-    options.headless = True
+    # options.headless = True
 
-    binary_location = "/opt/headless-chromium"
+    binary_location = "opt/headless-chromium"
     options.binary_location = binary_location
+
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--single-process")
+    options.add_argument("--disable-dev-shm-usage")
 
     # Surpress logging
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    chromedriver_location = "/opt/chromedriver"
+    chromedriver_location = "opt/chromedriver"
     driver = webdriver.Chrome(chromedriver_location, chrome_options = options)
 
     driver.set_page_load_timeout(10) 
