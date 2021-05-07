@@ -1,0 +1,287 @@
+[
+    {
+        "product_id": "3342",
+        "store": "Voli",
+        "category_name": "Žvake",
+        "name": "Orbit spermint 14 g",
+        "brief_product_description": "Guma za žvakanje",
+        "price_info": {
+            "current_price": "0.55€"
+        },
+        "energy": "635/152",
+        "fats": 0.0,
+        "saturated_fats": 0.0,
+        "proteins": 0.0,
+        "carbs": 63.5,
+        "sugar": 0.0,
+        "fiber": 0.0,
+        "salt": 0.0,
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu",
+            "Zemlja": "Poljska",
+            "Proizvođač": "Mars",
+            "Uvozi": "Neregelia doo Podgorica",
+            "Sastojci": "Zaslađivači - ksilitol, sorbitol, aspartam, manitol, acesulfam k, sukraloza; gumi baza, humektat - glicerol, zgušnjivač - arapska guma, arome, emulgator - sojin lecitin, sredstvo za glaziranje - karnauba vosak, antioksidans E320",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Sojin lecitin",
+            "Alkohol": "-",
+            "Dodatne informacije": "Prekomjerna upotreba može da izazove laksativni efekat."
+        },
+        "image_urls": [
+            "https://ecommprod.voli.me/storage/images/products/5416/5416_1.jpg",
+            "https://ecommprod.voli.me/storage/images/products/5416/5416_2.jpg",
+            "https://ecommprod.voli.me/storage/images/products/5416/5416_3.jpg"
+        ]
+    },
+    {
+        "product_id": "3332",
+        "store": "Voli",
+        "category_name": "Žvake",
+        "name": "Airwaves black mint 14 g",
+        "brief_product_description": "Guma za žvakanje",
+        "price_info": {
+            "current_price": "0.59€"
+        },
+        "energy": "585/140",
+        "fats": 0.0,
+        "saturated_fats": 0.0,
+        "proteins": 0.0,
+        "carbs": 58.5,
+        "sugar": 0.0,
+        "fiber": 0.0,
+        "salt": 0.0,
+        "description": {
+            "Čuvanje": "Čuvati na suvom i hladnom mjestu.",
+            "Zemlja": "Poljska",
+            "Proizvođač": "Mars",
+            "Uvozi": "Neregelia doo Podgorica",
+            "Sastojci": "Zaslađivači - sorbitol, izomalt, manitol Sredstvo za glaziranje - kalcijum karbonat, gustin, SOJIN lecitin",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "-",
+            "Alkohol": "-",
+            "Dodatne informacije": "-"
+        },
+        "image_urls": [
+            "https://ecommprod.voli.me/storage/images/products/5390/5390_3.jpg",
+            "https://ecommprod.voli.me/storage/images/products/5390/5390_2.jpg",
+            "https://ecommprod.voli.me/storage/images/products/5390/5390_1.jpg"
+        ]
+    },
+    {
+        "product_id": "3337",
+        "store": "Voli",
+        "category_name": "Žvake",
+        "name": "Orbit eucalyptus 14 g",
+        "brief_product_description": "Guma za žvakanje",
+        "price_info": {
+            "current_price": "0.55€"
+        },
+        "energy": "610/146",
+        "fats": 0.0,
+        "saturated_fats": 0.0,
+        "proteins": 0.0,
+        "carbs": 61.0,
+        "sugar": 0.0,
+        "fiber": 0.0,
+        "salt": 0.0,
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu",
+            "Zemlja": "Poljska",
+            "Proizvođač": "Mars",
+            "Uvozi": "Neregelia doo Podgorica",
+            "Sastojci": "Zaslađivači - ksilitol, sorbitol, aspartam Gumi baza, gustin, arome, humektant-glicerol, SOJIN lecitin",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Sojin lecitin",
+            "Alkohol": "-",
+            "Dodatne informacije": "Prekomjerna upotreba može da izazove laksativni efekat."
+        },
+        "image_urls": [
+            "https://ecommprod.voli.me/storage/images/products/5402/5402_1.jpg",
+            "https://ecommprod.voli.me/storage/images/products/5402/5402_2.jpg",
+            "https://ecommprod.voli.me/storage/images/products/5402/5402_3.jpg"
+        ]
+    },
+    {
+        "product_id": "3339",
+        "store": "Voli",
+        "category_name": "Žvake",
+        "name": "Orbit pepermint 14 g",
+        "brief_product_description": "Guma za žvakanje",
+        "price_info": {
+            "current_price": "0.55€"
+        },
+        "energy": "618/148",
+        "fats": 0.0,
+        "saturated_fats": 0.0,
+        "proteins": 0.0,
+        "carbs": 61.8,
+        "sugar": 0.0,
+        "fiber": 0.0,
+        "salt": 0.0,
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu",
+            "Zemlja": "Poljska",
+            "Proizvođač": "Mars",
+            "Uvozi": "Neregelia doo Podgorica",
+            "Sastojci": "Zaslađivači - ksilitol, sorbitol, aspartam, manitol, acesulfam k, sukraloza; gumi baza, humektat - glicerol, zgušnjivač - arapska guma, arome, humektant-glicerol, emulgator - sojin lecitin, sredstvo za glaziranje - karnauba vosak, antioksidans E320",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Sojin lecitin",
+            "Alkohol": "-",
+            "Dodatne informacije": "Prekomjerna upotreba može da izazove laksativni efekat."
+        },
+        "image_urls": [
+            "https://ecommprod.voli.me/storage/images/products/5408/5408_3.jpg",
+            "https://ecommprod.voli.me/storage/images/products/5408/5408_1.jpg",
+            "https://ecommprod.voli.me/storage/images/products/5408/5408_2.jpg"
+        ]
+    },
+    {
+        "product_id": "3330",
+        "store": "Voli",
+        "category_name": "Žvake",
+        "name": "Orbit green mint 14 g",
+        "brief_product_description": "Guma za žvakanje bez šećera sa zaslađivačima- ukus mente i mentola.",
+        "price_info": {
+            "current_price": "0.55€"
+        },
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu",
+            "Zemlja": "Poljska",
+            "Proizvođač": "Mars",
+            "Uvozi": "Neregelia doo Podgorica",
+            "Sastojci": "Zaslađivači: sorbitol, izomalt, maltitol sirup, aspartam, acesulfam k; gumena baza, sredstvo za glaziranje kalcijum- karbonat, arome, zgnjušivač arapska guma, emulgator sojin leticin, boja E171, sredstvo za glaziranje karnauba vosak, boja E171, antioksidans E320, boje E133, E141, E160a",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Sojin lecitin",
+            "Alkohol": "-",
+            "Dodatne informacije": "Prekomjerna upotreba može da izazove laksativni efekat."
+        },
+        "image_urls": [
+            "https://ecommprod.voli.me/storage/images/products/53897/53897_1.jpg",
+            "https://ecommprod.voli.me/storage/images/products/53897/53897_2.jpg",
+            "https://ecommprod.voli.me/storage/images/products/53897/53897_3.jpg"
+        ]
+    },
+    {
+        "product_id": "3338",
+        "store": "Voli",
+        "category_name": "Žvake",
+        "name": "Orbit for kids 13 g",
+        "brief_product_description": "Guma za žvakanje bez šećera",
+        "price_info": {
+            "current_price": "0.45€"
+        },
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu",
+            "Zemlja": "Francuska",
+            "Proizvođač": "Wrigley France S.N.C.",
+            "Uvozi": "Neregelia doo Podgorica",
+            "Sastojci": "Zaslađivači: sorbitol, manitol, malititol sirup, sukraloza, acesulfam k; gumena baza, humektant glicerol, arome, emulgator sojin leticin, antioksidans BHA.",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Sojin lecitin",
+            "Alkohol": "-",
+            "Dodatne informacije": "Prekomjerna upotreba može da izazove laksativni efekat."
+        },
+        "image_urls": [
+            "https://ecommprod.voli.me/storage/images/products/5405/5405_1.jpg",
+            "https://ecommprod.voli.me/storage/images/products/5405/5405_2.jpg"
+        ]
+    },
+    {
+        "product_id": "297",
+        "store": "Voli",
+        "category_name": "Žvake",
+        "name": "Žvake Bubblemint 14 g Orbit",
+        "brief_product_description": "Guma za žvakanje bez šećera sa zaslađivačima, ukus voća i mente",
+        "price_info": {
+            "current_price": "0.55€"
+        },
+        "energy": "616/148",
+        "fats": 0.0,
+        "saturated_fats": 0.0,
+        "proteins": 0.0,
+        "carbs": 61.6,
+        "sugar": 0.0,
+        "fiber": 0.0,
+        "salt": 0.0,
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu",
+            "Zemlja": "Poljska",
+            "Proizvođač": "Mars",
+            "Uvozi": "Neregelia doo Podgorica",
+            "Sastojci": "Zaslađivači: ksilitol, sorbitol, aspartam, acesulfam k, sukraloza; guma baza, zgnjušivač- arapska guma, humektant- glicerol, arome, emulgator- sojin leticin, boja E171, sredstvo za glaziranje- karnauba vosak, antioksidans E320",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Sojin lecitin",
+            "Alkohol": "-",
+            "Dodatne informacije": "Prekomjerna upotreba može da izazove laksativni efekat."
+        },
+        "image_urls": [
+            "https://ecommprod.voli.me/storage/images/products/113634/113634_2.jpg",
+            "https://ecommprod.voli.me/storage/images/products/113634/113634_1.jpg",
+            "https://ecommprod.voli.me/storage/images/products/113634/113634_3.jpg"
+        ]
+    },
+    {
+        "product_id": "3341",
+        "store": "Voli",
+        "category_name": "Žvake",
+        "name": "Orbit white freshmint 14 g",
+        "brief_product_description": "Guma za žvakanje",
+        "price_info": {
+            "current_price": "0.59€"
+        },
+        "energy": "604/145",
+        "fats": 0.0,
+        "saturated_fats": 0.0,
+        "proteins": 0.0,
+        "carbs": 60.4,
+        "sugar": 0.0,
+        "fiber": 0.0,
+        "salt": 0.06,
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu",
+            "Zemlja": "Poljska",
+            "Proizvođač": "Mars",
+            "Uvozi": "Neregelia doo Podgorica",
+            "Sastojci": "Zaslađivači - ksilitol, sorbitol, aspartam, manitol, acesulfam k; gumi baza, zgušnjivač - arapska guma, arome, humektant-glicerol, sredstvo za povećavanje zapremine - dikalcijum-fosfat, emulgator - sojin lecitin, regulator kisjelosti - natrijum-hidrogenkarbonat, sredstvo za glaziranje - karnauba vosak, antioksidans E320, boja E133",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Sojin lecitin",
+            "Alkohol": "-",
+            "Dodatne informacije": "Prekomjerna upotreba može da izazove laksativni efekat."
+        },
+        "image_urls": [
+            "https://ecommprod.voli.me/storage/images/products/5412/5412_1.jpg"
+        ]
+    },
+    {
+        "product_id": "2860",
+        "store": "Voli",
+        "category_name": "Žvake",
+        "name": "Orbit blueberry 14 g",
+        "brief_product_description": "Guma za žvakanje",
+        "price_info": {
+            "current_price": "0.55€"
+        },
+        "energy": "719/173",
+        "fats": 0.0,
+        "saturated_fats": 0.0,
+        "proteins": 0.0,
+        "carbs": 70.2,
+        "sugar": 0.0,
+        "fiber": 0.0,
+        "salt": 0.0,
+        "description": {
+            "Čuvanje": "Čuvati na suvom mjestu",
+            "Zemlja": "Poljska",
+            "Proizvođač": "Mars",
+            "Uvozi": "Neregelia doo Podgorica",
+            "Sastojci": "Zaslađivači - ksilitol, sorbitol, aspartam, manitol, acesulfam k, sukraloza; gumi baza, humektat - glicerol, zgušnjivač - arapska guma, arome, kisjelina - limunska kisjelina,  emulgator - sojin lecitin, sredstvo za glaziranje - karnauba vosak",
+            "Rok upotrebe": "Otisnuto na pakovanju",
+            "Alergeni": "Sojin lecitin",
+            "Alkohol": "-",
+            "Dodatne informacije": "Prekomjerna upotreba može da izazove laksativni efekat."
+        },
+        "image_urls": [
+            "https://ecommprod.voli.me/storage/images/products/22568/22568_1.jpg"
+        ]
+    }
+]

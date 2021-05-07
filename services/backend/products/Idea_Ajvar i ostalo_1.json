@@ -1,0 +1,38 @@
+[
+	{
+		"product_id": 60013837,
+		"name": "PINĐUR BLAGI 720ML SAVA",
+		"category_name": "Ajvar i ostalo",
+		"store": "IDEA",
+		"barcodes": [
+			"3872987000932"
+		],
+		"image_urls": [
+			"https://www.ideaonline.me/images/products/405/405000766_1.jpg?1572448955",
+			"https://www.ideaonline.me/images/products/405/405000766_1s.jpg?1572448955",
+			"https://www.ideaonline.me/images/products/405/405000766_1m.jpg?1572448955",
+			"https://www.ideaonline.me/images/products/405/405000766_1l.jpg?1572448955"
+		],
+		"price_info": {
+			"current_price": "2,65 €"
+		}
+	},
+	{
+		"product_id": 60013758,
+		"name": "PINĐUR LJUTI 720ML SAVA",
+		"category_name": "Ajvar i ostalo",
+		"store": "IDEA",
+		"barcodes": [
+			"3872987000192"
+		],
+		"image_urls": [
+			"https://www.ideaonline.me/images/products/405/405000767_1.jpg?1572448956",
+			"https://www.ideaonline.me/images/products/405/405000767_1s.jpg?1572448956",
+			"https://www.ideaonline.me/images/products/405/405000767_1m.jpg?1572448956",
+			"https://www.ideaonline.me/images/products/405/405000767_1l.jpg?1572448956"
+		],
+		"price_info": {
+			"current_price": "2,65 €"
+		}
+	}
+]

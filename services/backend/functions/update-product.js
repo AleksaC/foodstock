@@ -12,7 +12,7 @@ export const main = handler(async (event, context) => {
     let expressionAttributeNames = {};
     let expressionAttributeValues = {};
     for (let i = 0; i < inputKeys.length; i++) {
-        let key = inputKeys[i];
+        const key = inputKeys[i];
         if (key === "id") {
             // don't do anything with the id
             continue;

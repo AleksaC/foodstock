@@ -43,17 +43,17 @@ const compare = (oldImage, newImage) => {
     let anythingHasChanged = false;
     const mapKeyToName = {
         // for example, if the brief description was changed,
-        // I don't want (in the range key) to say, for example
-        // 2021-04-26T20:15:55.942Z_Changed briefDescription to ...-
-        // rather, I want it to say 2021-04-26T20:15:55.942Z_Changed brief description to ...
+        // I don't want the change to say, for example
+        // Changed briefDescription to ... - rather, I want it to say
+        // Changed brief description to ...
         briefDescription: "brief description",
         category: "category",
-        // currentPrice.date is missing
-        discountAmount: "discount amount",
+        date: "price date",
+        discountAmount: "discount amount (%)",
         discountEndDate: "discount end date",
         discountPrice: "discounted price",
         discountStartDate: "discount start date",
-        regularPrice: "regular price",
+        regularPrice: "regular price (€)",
         additionalInformation: "additional information",
         alcohol: "alcohol percentage",
         allergens: "allergens list",
@@ -75,22 +75,22 @@ const compare = (oldImage, newImage) => {
         saturatedFats: "saturated fats value",
         sugar: "sugar value",
         status: "status",
+        barcode: "barcode",
+        // store ?
+        // storeID ?
+        // productStoreID ?
     };
     let keys = Object.keys(oldImage); // or newImage, doesn't matter
+    const skipKeys = ["id", "images", "store", "storeID", "productStoreID"]; // which keys to skip
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
-        if (key === "id" || key === "images") {
-            // skip the id and images
+        if (skipKeys.includes(key)) {
             continue;
         }
         if (key === "currentPrice" || key === "description" || key === "nutritionalValues") {
             const objectKeys = Object.keys(oldImage[key]);
             for (let j = 0; j < objectKeys.length; j++) {
                 const objectKey = objectKeys[j];
-                if (objectKey === "date") {
-                    // skip the currentPrice.date
-                    continue;
-                }
                 let oldValue = oldImage[key][objectKey];
                 let newValue = newImage[key][objectKey];
                 if (oldValue !== newValue) {
