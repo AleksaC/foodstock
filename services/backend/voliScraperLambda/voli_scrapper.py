@@ -230,7 +230,7 @@ def main(event, context):
     options = Options()
     options.headless = True
 
-    binary_location = "opt/headless-chromium"
+    binary_location = "/opt/headless-chromium"
     options.binary_location = binary_location
 
     # Surpress logging
@@ -241,8 +241,8 @@ def main(event, context):
     driver.set_page_load_timeout(10) 
 
     if DEBUG:
-        driver.get("https://www.neaminational.org.au/")
-        body = f"Headless Chrome Initialized, Page title: {driver.title}"
+        driver.get("https://www.google.com/")
+        # body = f"Headless Chrome Initialized, Page title: {driver.title}"
         # print(scrape_object("https://ecommprod.voli.me/proizvod/2365", driver, "whatever"))
 
     else:
@@ -255,7 +255,7 @@ def main(event, context):
 
     response = {
         "statusCode": 200,
-        "body": body
+        "body": "Success!"
     }
 
     return response
