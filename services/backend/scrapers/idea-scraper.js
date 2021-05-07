@@ -72,7 +72,9 @@ const scrapeProduct = function(product, categoryName) {
     return currentProduct;
 }
 
-/* const writeToJson = function(productList, categoryName, counter) {
+/* 
+Write resulting products to JSON locally, not done in case of periodic scraping.
+const writeToJson = function(productList, categoryName, counter) {
     let filepath = path.join(vars.parsed.JSON_PATH, `${categoryName}_${counter}.json`);
     fs.writeFileSync(filepath, JSON.stringify(productList, null, "\t"));
 } */
@@ -105,7 +107,7 @@ const writeCategory = async function(category, batch_size) {
     const numberOfProducts = response.data._page.item_count;
     let productList = [];
             
-    for(let i = 1; i <= Math.ceil(numberOfProducts / 24); i++) {
+    for(let i = 1; i <= Math.ceil(numberOfProducts / 25); i++) {
         const productResponse = await axios.get(`https://www.ideaonline.me/v2/categories/${category.id}/products?per_page=25&page=${i}&filter[sort]=soldStatisticsDesc`
         , { headers: 
                     {
@@ -135,7 +137,7 @@ const writeCategory = async function(category, batch_size) {
 
 export const scrapeIdea = async function() {
     // Make the resulting JSON directory if it does not exist
-
+    // Done for scraping products locally.
     /* if(!fs.existsSync(vars.parsed.JSON_PATH)) {
         fs.mkdirSync(vars.parsed.JSON_PATH);
     } */

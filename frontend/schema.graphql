@@ -1,0 +1,147 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  createProduct(input: createProductInput!): Product
+  deleteProduct(input: deleteProductInput!): Product
+  updateProduct(input: updateProductInput!): Product
+}
+
+#  Consider adding a `!` in, for example, nutritionalValuesInput, 
+# descriptionInput, and in the updateProductInput itself
+# I think it's better, just as a layer of security, because if some 
+# attribute is not sent, ESPECIALLY the object attributes (price, description,
+# nutriValues), then the product in the database will be malformed
+# Maybe while testing, leave that some fields can be null, but later on,
+# perhaps change everything to be non-null (?)
+# Maybe also make all the queries and mutations for products return Product! instead of Product
+# Make the barcode (and categories?) a list down the line
+type Product {
+  barcode: String!
+  briefDescription: String!
+  category: String!
+  currentPrice: currentPrice!
+  description: description!
+  id: ID!
+  images: [String]!
+  name: String!
+  nutriScore: String!
+  nutritionalValues: nutritionalValues!
+  productStoreID: String!
+  status: String!
+  store: String!
+  storeID: String!
+}
+
+type Query {
+  getAllProducts: [Product!]
+  getProduct(id: ID!): Product
+  search(limit: Int!, nextToken: String, query: String!): SearchResultsPage!
+}
+
+type SearchResultsPage {
+  nextToken: String
+  results: [Product!]
+}
+
+type currentPrice {
+  date: String!
+  discountAmount: String!
+  discountEndDate: String!
+  discountPrice: String!
+  discountStartDate: String!
+  regularPrice: String!
+}
+
+type description {
+  additionalInformation: String!
+  alcohol: String!
+  allergens: String!
+  countryOfOrigin: String!
+  expiryDate: String!
+  imports: String!
+  ingredients: String!
+  maintenance: String!
+  producer: String!
+}
+
+type nutritionalValues {
+  carbs: Float!
+  energy: String!
+  fats: Float!
+  fibers: Float!
+  proteins: Float!
+  salt: Float!
+  saturatedFats: Float!
+  sugar: Float!
+}
+
+input createProductInput {
+  barcode: String!
+  briefDescription: String!
+  category: String!
+  #  images: ???
+  currentPrice: currentPriceInput!
+  description: descriptionInput!
+  name: String!
+  nutriScore: String!
+  nutritionalValues: nutritionalValuesInput!
+  status: String!
+}
+
+input currentPriceInput {
+  date: String!
+  #  is it necessary?
+  discountAmount: String!
+  discountEndDate: String!
+  discountPrice: String!
+  discountStartDate: String!
+  regularPrice: String!
+}
+
+input deleteProductInput {
+  id: ID!
+}
+
+input descriptionInput {
+  additionalInformation: String!
+  alcohol: String!
+  allergens: String!
+  countryOfOrigin: String!
+  expiryDate: String!
+  imports: String!
+  ingredients: String!
+  maintenance: String!
+  producer: String!
+}
+
+input nutritionalValuesInput {
+  carbs: Float!
+  energy: String!
+  fats: Float!
+  fibers: Float!
+  proteins: Float!
+  salt: Float!
+  saturatedFats: Float!
+  sugar: Float!
+}
+
+input updateProductInput {
+  #  Don't think I need these below, maybe only the barcode
+  # images: WhatToDoWithThis
+  #? store: String
+  #? storeID: String
+  #? productStoreID: Don'tThinkINeedThis
+  barcode: String
+  briefDescription: String
+  category: String
+  currentPrice: currentPriceInput
+  description: descriptionInput
+  id: ID!
+  name: String
+  nutriScore: String
+  nutritionalValues: nutritionalValuesInput
+  status: String
+}
