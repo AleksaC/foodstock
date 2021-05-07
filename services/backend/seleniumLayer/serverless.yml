@@ -10,7 +10,7 @@ layers:
   selenium:
     path: selenium
     compatibleRuntimes:
-      - "python3.6"
+      - "python3.8"
   
   chromedriver:
     path: chromedriver
