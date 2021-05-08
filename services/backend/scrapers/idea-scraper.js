@@ -84,7 +84,7 @@ const traverseCategories = async function(categoryID, batch_size = 25) {
     const category = response.data;
 
     if(!category.children || category.children.length === 0) {
-        writeCategory(category, batch_size);
+        await writeCategory(category, batch_size);
     }
 
     else {
@@ -121,8 +121,8 @@ const writeCategory = async function(category, batch_size) {
             productList.push(currentProduct);
             
             if(productList.length === batch_size) {
-                writeProducts(productList);
-                await sleep(1000); // simulating synchronous sleep
+                await writeProducts(productList);
+                await sleep(1200); // simulating synchronous sleep
                 counter++;
                 productList = []
             }
@@ -130,8 +130,8 @@ const writeCategory = async function(category, batch_size) {
     }
 
     if(productList.length > 0) {
-        writeProducts(productList);
-        await sleep(1000); // simulating synchronous sleep
+        await writeProducts(productList);
+        await sleep(1200); // simulating synchronous sleep
     }
 }
 
@@ -141,10 +141,23 @@ export const scrapeIdea = async function() {
     /* if(!fs.existsSync(vars.parsed.JSON_PATH)) {
         fs.mkdirSync(vars.parsed.JSON_PATH);
     } */
+    /*
+    Currently we're simulating synchronous sleep and that's how we slow down the scraping
+    If the billing goes up, look into giving some Read/Write capacity units
+    Also, for now the scraping and writing works but if it doesn't turn out to be good/optimal
+    or if it's taking too long, look into changing the approach.
+
+    The other approach might be scanning the existing products from the database and calling the
+    API for those products, and see if there were any changes. If there aren't any, just skip that
+    product, otherwise save the scrape product for batch writing later. This can reduce the
+    total number of batch writes and the total number of scans.
+    */
 
     const categories = await fetchCategories(categoriesURL);
-    for(const category of categories) {
-        traverseCategories(category.id);
+    for (const category of categories) {
+        // console.time();
+        await traverseCategories(category.id);
+        // console.timeEnd();
         // Remove the break after we are ready to insert thousands of products
         break;
     }
