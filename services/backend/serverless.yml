@@ -28,9 +28,9 @@ provider:
   stage: dev
   region: eu-central-1
   environment:
-  #   productsTableName: !ImportValue '${self:custom.sstApp}-ProductsTableName'
-  #   usersTableName: !ImportValue '${self:custom.sstApp}-UsersTableName'
-  #   productHistoryTableName: !ImportValue '${self:custom.sstApp}-ProductHistoryTableName'
+    productsTableName: !ImportValue '${self:custom.sstApp}-ProductsTableName'
+    usersTableName: !ImportValue '${self:custom.sstApp}-UsersTableName'
+    productHistoryTableName: !ImportValue '${self:custom.sstApp}-ProductHistoryTableName'
     stage: ${self:custom.stage}
 
 functions:
@@ -137,8 +137,12 @@ functions:
         Action:
           - dynamodb:PutItem
           - dynamodb:UpdateItem
-        # Add Products table once you have configured an appropriate account.
-        Resource: 'arn:aws:dynamodb:eu-central-1:323751276496:table/TestTable'
+        # Add Products table once you have configured an appropriate account
+        # and once we make sure everything works properly
+        # Don't forget to modify the listAllProducts function so it works with pagination
+        # (look at the getProducts function within fill-database.js, it's similar to what
+        # needs to be done)
+        Resource: 'arn:aws:dynamodb:eu-central-1:233257714052:table/PeriodicScrapingTest'
     # Should be uncommented for periodic scraping
     # events:
     #   - schedule:

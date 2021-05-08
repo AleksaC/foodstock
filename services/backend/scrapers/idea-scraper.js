@@ -145,5 +145,7 @@ export const scrapeIdea = async function() {
     const categories = await fetchCategories(categoriesURL);
     for(const category of categories) {
         traverseCategories(category.id);
+        // Remove the break after we are ready to insert thousands of products
+        break;
     }
 }
