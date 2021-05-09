@@ -1,7 +1,7 @@
 # Foodstock
 
 ### Prototype for a crowdsourcing web application regarding the publicly available data about food products. 
-###  Note: For utilizing product searching and other functions, you have to be logged in. An account can easily be created by clicking the Sign In button.
+###  Note: For utilizing product searching and other functions, you have to be logged in. An account can easily be created by clicking the Sign Up button.
 
 # Stack
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com/)
