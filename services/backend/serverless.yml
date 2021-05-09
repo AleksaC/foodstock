@@ -18,6 +18,9 @@ custom:
   # Name of the SST app that's deploying our infrastructure
   sstApp: ${self:custom.stage}-infrastructure
   appSync: ${file(serverless.appsync-api.yml)}
+  bundle:
+    # Linting disabled for now.
+    linting: false
 
 provider:
   name: aws
@@ -126,7 +129,25 @@ functions:
         Action:
           - dynamodb:PutItem
         Resource: !ImportValue '${self:custom.sstApp}-ProductHistoryTableArn'
-    
+
+  idea-scraper:
+    handler: functions/idea-scraper.main
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+          - dynamodb:UpdateItem
+        # Add Products table once you have configured an appropriate account
+        # and once we make sure everything works properly
+        # Don't forget to modify the listAllProducts function so it works with pagination
+        # (look at the getProducts function within fill-database.js, it's similar to what
+        # needs to be done)
+        Resource: 'arn:aws:dynamodb:eu-central-1:233257714052:table/PeriodicScrapingTest'
+    # Should be uncommented for periodic scraping
+    # events:
+    #   - schedule:
+    #       rate(1 days)
+
 resources:
   Resources:
     CognitoUserPool:

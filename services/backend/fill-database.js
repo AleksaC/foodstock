@@ -1,14 +1,17 @@
-const fs = require("fs");
-const files = fs.readdirSync("products"); // folder products must be in the same directory as this file
-const uuid = require("uuid");
-const constants = require("./libs/fill-db-constants");
+/* const fs = require("fs");
+const files = fs.readdirSync("products"); */ // folder products must be in the same directory as this file
+import * as uuid from "uuid";
+import constants from "./libs/fill-db-constants";
+import AWS from "aws-sdk";
 
-const AWS = require("aws-sdk");
 AWS.config.update({
     region: "eu-central-1",
 });
+
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
+/* Move some of these functions to a separate file,
+or "merge" with existing files, now that this is a module */
 function buildNutriValues(product) {
     // Form the nutritional values
     let nutriValues = {
@@ -27,36 +30,35 @@ function buildNutriValues(product) {
 function buildPrice(product) {
     // Form the price information
     let today = new Date();
-    let dscAmt, dscSD, dscED, dscPr, regPr; // they correspond, in order, to the names of keys in the price object
+    let discountAmount,
+        discountStartDate,
+        discountEndDate,
+        discountPrice,
+        regularPrice;
+    const sliceBackAmount = product.store.toLowerCase() === "voli" ? -1 : -2; // for removing the euro sign
 
     if ("discount_info" in product) {
-        dscAmt = product.discount_info.discount.slice(0, -1); // remove the %
+        discountAmount = product.discount_info.discount.slice(0, -1); // remove the %
         let dates = product.discount_info.duration.split("-");
-        dscSD = dates[0] + today.getFullYear() + "."; // start date of discount
-        dscED = dates[1] + today.getFullYear() + "."; // end date of discount
-        dscPr = product.price_info.discounted_price.slice(0, -1); // remove the euro sign
+        discountStartDate = dates[0]; // start date of discount
+        discountEndDate = dates[1]; // end date of discount
+        discountPrice = product.price_info.discounted_price.slice(0, -1);
+        regularPrice = product.price_info.old_price.slice(0, sliceBackAmount);
         if (product.store.toLowerCase() === "voli") {
-            regPr = product.price_info.old_price.slice(0, -1);
-        }
-        else { // idea
-            regPr = product.price_info.old_price.slice(0, -2);
+            discountStartDate += today.getFullYear() + ".";
+            discountEndDate += today.getFullYear() + ".";
         }
     } else {
-        dscAmt = dscSD = dscED = dscPr = "";
-        if (product.store.toLowerCase() === "voli") {
-            regPr = product.price_info.current_price.slice(0, -1);
-        }
-        else { // idea
-            regPr = product.price_info.current_price.slice(0, -2);
-        }
+        discountAmount = discountStartDate = discountEndDate = discountPrice = "";
+        regularPrice = product.price_info.current_price.slice(0, sliceBackAmount);
     }
     let price = {
         date: formatDate(today),  // so the date format is consistent throughout the product
-        discountAmount: dscAmt,
-        discountStartDate: dscSD,
-        discountEndDate: dscED,
-        discountPrice: dscPr,
-        regularPrice: regPr,
+        discountAmount: discountAmount,
+        discountStartDate: discountStartDate,
+        discountEndDate: discountEndDate,
+        discountPrice: discountPrice,
+        regularPrice: regularPrice,
     };
     return price;
 }
@@ -122,9 +124,150 @@ function formatDate(date) {
     return formatted;
 }
 
-const path = __dirname + "\\products\\"; // this is where the JSON files live
+// const path = __dirname + "\\products\\"; // this is where the JSON files live
 
-const main = async () => {
+const performScan = async (params) => {
+    const result = await dynamoDB.scan(params).promise();
+    return result;
+};
+
+const getProducts = async (idList) => {
+    // Return old products whose productStoreID is in idList
+    let filterExpression = "productStoreID IN (";
+    let expressionAttributeValues = {};
+    for (let i = 0; i < idList.length; i++) {
+        const id = `:id${i}`;
+        filterExpression += id + ", ";
+        expressionAttributeValues[id] = idList[i];
+    }
+    filterExpression = filterExpression.slice(0, -2) + ")";
+
+    let params = {
+        TableName: "PeriodicScrapingTest",
+        IndexName: "productStoreID-index",
+        FilterExpression: filterExpression,
+        ExpressionAttributeValues: expressionAttributeValues,
+    };
+
+    let entireResult = []; // all of the old products
+    let result = await performScan(params);
+    result.Items.forEach((product) => entireResult.push(product));
+
+    while (result.LastEvaluatedKey) { // while it's not undefined
+        // continue scanning from the LastEvaluatedKey
+        params["ExclusiveStartKey"] = result.LastEvaluatedKey;
+        result = await performScan(params);
+        result.Items.forEach((product) => entireResult.push(product));
+    }
+    console.log("The scan returned", entireResult.length, "'relevant' products");
+    return entireResult;
+}
+
+const returnOldProductWith = (productStoreID, oldProducts) => {
+    if (oldProducts.length === 0) {
+        return undefined;
+    }
+    for (const oldProduct of oldProducts) {
+        if (oldProduct.productStoreID === productStoreID) {
+            return oldProduct;
+        }
+    }
+    return undefined;
+}
+
+const merge = (oldProduct, newProduct) => {
+    // I couldn't bother with deepmerge, it didn't want to cooperate
+    if (!oldProduct) {
+        return newProduct;
+    }
+    const result = {};
+    // console.log(oldProduct);
+    // console.log("\n\nNEW PRODUCT:", newProduct);
+    const keys = Object.keys(oldProduct);
+    for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        //console.log(key);
+        if (key === "currentPrice" || key === "nutritionalValues" || key === "description") {
+            const subkeys = Object.keys(oldProduct[key]);
+            result[key] = {};
+            for (let j = 0; j < subkeys.length; j++) {
+                const subkey = subkeys[j];
+                //console.log("\t", subkey);
+                result[key][subkey] = newProduct[key][subkey];
+            }
+        }
+        else {
+            if (key === "id") {
+                result[key] = oldProduct[key];
+            }
+            else {
+                result[key] = newProduct[key];
+            }
+        }
+    }
+    //console.log("\n\nRESULT:", result);
+    return result;
+}
+
+export const writeProducts = async (products) => {
+    let allParams = [];
+    let idList = [];
+
+    console.log("Lambda called for", products[0].category_name);
+    for (const product of products) {
+        // find the productStoreID of the given products
+        const storeNamespace = parseStore(product.store);
+        const productStoreID = uuid.v5(product.product_id.toString(), storeNamespace);
+        idList.push(productStoreID);
+    }
+    // get the products that already exist
+    const oldProducts = await getProducts(idList);
+
+    for (let i = 0; i < products.length; i++) {
+        const product = products[i];
+        let productID = uuid.v4();
+        const storeNamespace = parseStore(product.store);
+        const productStoreID = uuid.v5(product.product_id.toString(), storeNamespace);
+        const newProduct = {
+            id: productID,
+            name: product.name,
+            category: product.category_name,
+            briefDescription: product.brief_product_description || "",
+            status: "published",
+            nutriScore: "E",
+            images: product.image_urls || [], // just in case
+            // new
+            store: product.store.toLowerCase(),
+            storeID: storeNamespace, // returns the namespace of the store (acts as the ID)
+            productStoreID: productStoreID, // for synchronizing changes later
+            barcode: parseBarcode(product.barcodes),
+            //
+            description: buildDescription(product),
+            nutritionalValues: buildNutriValues(product),
+            currentPrice: buildPrice(product),
+        };
+        const oldProduct = returnOldProductWith(productStoreID, oldProducts);
+        const item = merge(oldProduct, newProduct);
+
+        let params = {
+            PutRequest: {
+                Item: item,
+            },
+        };
+        allParams.push(params);
+    }
+
+    // added all the 25 products to the params list, now batch write
+    let batch = {
+        RequestItems: {},
+    };
+    // Don't forget to change the table!!!!!
+    batch.RequestItems["PeriodicScrapingTest"] = allParams;
+    const res = await dynamoDB.batchWrite(batch).promise();
+    console.log("Any unprocessed items?", res.UnprocessedItems);
+};
+
+/* const main = async () => {
     for (const file of files) {
         const products = require(path + file); // get the array in the JSON file
         let allParams = [];
@@ -147,7 +290,7 @@ const main = async () => {
                         storeID: storeNamespace, // returns the namespace of the store (acts as the ID)
                         productStoreID: uuid.v5(product.product_id.toString(), storeNamespace), // for synchronizing changes later
                         barcode: parseBarcode(product.barcodes),
-                        // 
+                        //
                         description: buildDescription(product),
                         nutritionalValues: buildNutriValues(product),
                         currentPrice: buildPrice(product),
@@ -165,6 +308,6 @@ const main = async () => {
         // I have to process the unprocessed items later on
         console.log("Any unprocessed items?", res.UnprocessedItems);
     }
-};
+}; */
 
-main().then((x) => console.log("All done!"));
+// main().then((x) => console.log("All done!"));
