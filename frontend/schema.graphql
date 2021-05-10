@@ -9,9 +9,9 @@ type Mutation {
   updateProduct(input: updateProductInput!): Product
 }
 
-#  Consider adding a `!` in, for example, nutritionalValuesInput, 
+#  Consider adding a `!` in, for example, nutritionalValuesInput,
 # descriptionInput, and in the updateProductInput itself
-# I think it's better, just as a layer of security, because if some 
+# I think it's better, just as a layer of security, because if some
 # attribute is not sent, ESPECIALLY the object attributes (price, description,
 # nutriValues), then the product in the database will be malformed
 # Maybe while testing, leave that some fields can be null, but later on,

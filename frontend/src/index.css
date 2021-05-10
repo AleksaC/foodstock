@@ -1,76 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-@tailwind base;
-@tailwind components;
-
-.btn-nav{
-   @apply mx-2 px-2 sm:mx-2 sm:px-2 md:mx-5 md:px-2 bg-white text-red-500 
-   font-semibold rounded-xl transform delay-100 hover:ring-red-500 hover:ring-2
-   
-   
+@layer base {
+  /* Add base tailwind styles here  */
 }
 
-.log-in-div{
-   @apply  mt-20 p-10 w-max rounded-xl grid justify-end bg-gradient-to-br from-amber-400 to-red-400
-}
-
-.log-in-input{
-   @apply rounded-xl focus:outline-none ml-5 mt-3 text-red-500 w-80 px-2 text-lg
-}
-
-.log-in-submit{
-   @apply mx-20 mt-16 text-red-500 rounded-xl px-3 hover:ring-2 hover:ring-red-500 bg-white
-}
-
-.log-in-form{
-   @apply grid justify-items-center text-white font-karla text-xl
-}
-.search{
-   @apply h-28 rounded-2xl bg-gradient-to-br flex from-amber-400 to-red-400 mt-8 
-}
-
-.input{
-   @apply m-3 w-60 outline-none  bg-white px-2 rounded-xl font-karla sm:w-80
-}
-
-.find-btn{
-   @apply rounded-xl m-3 transform delay-100 bg-white px-5 focus:outline-none font-karla 
-   font-semibold text-red-500 hover:ring-2 hover:ring-red-500
-}
-
-.drop-down-nav{
-   @apply w-40 h-60 z-50 xxs:ml-48 ring-amber-500 bg-red-500 grid justify-items-center 
-   gap-5 mt-2 xs:ml-80 absolute rounded-xl sm:hidden
-}
-
-.drop-down-btn{
-   @apply rounded-lg transform mx-2 px-10 delay-100 bg-white font-karla font-semibold hover:ring-2
-   hover:ring-amber-500 text-center text-amber-500
-}
-.nav-bar{
-   @apply bg-amber-500 rounded-b-xl p-3 items-center  
-   flex m-auto font-karla text-lg text-white border-b-4 border-red-500
-}
-
-.products-list{
-   @apply grid grid-cols-1 gap-10 mt-14 mb-16 justify-items-center 
-   sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
-}
-
-.product{
-   @apply shadow-lg transform hover:-translate-y-2 font-karla bg-gradient-to-br from-amber-400 
-   to-red-400 rounded-2xl  w-60 h-96 delay-100 duration-100 hover:ring-4 ring-2 ring-red-500
-}
-
-.paging {
-   @apply justify-items-center bg-amber-500 rounded-xl px-2 ml-5 text-white font-karla font-semibold
-}
-
-@tailwind utilities;
 @layer components {
-    .btn { /* ... */ }
+  .btn-nav {
+    @apply mx-2 px-2 sm:mx-2 sm:px-2 md:mx-5 md:px-2 bg-white text-red-500
+    font-semibold rounded-xl transform delay-100 hover:ring-red-500 hover:ring-2;
   }
-  
-  /* These styles will not be purged */
-  .flatpickr-innerContainer { /* ... */ }
-  .flatpickr-weekdayContainer { /* ... */ }
-  .flatpickr-weekday { /* ... */ }
+
+  .log-in-div {
+    @apply mt-20 p-10 w-max rounded-xl grid justify-end bg-gradient-to-br from-amber-400 to-red-400;
+  }
+
+  .log-in-input {
+    @apply rounded-xl focus:outline-none ml-5 mt-3 text-red-500 w-80 px-2 text-lg;
+  }
+
+  .log-in-submit {
+    @apply mx-20 mt-16 text-red-500 rounded-xl px-3 hover:ring-2 hover:ring-red-500 bg-white;
+  }
+
+  .log-in-form {
+    @apply grid justify-items-center text-white font-karla text-xl;
+  }
+  .search {
+    @apply h-28 rounded-2xl bg-gradient-to-br flex from-amber-400 to-red-400 mt-8;
+  }
+
+  .input {
+    @apply m-3 w-60 outline-none  bg-white px-2 rounded-xl font-karla sm:w-80;
+  }
+
+  .find-btn {
+    @apply rounded-xl m-3 transform delay-100 bg-white px-5 focus:outline-none font-karla
+    font-semibold text-red-500 hover:ring-2 hover:ring-red-500;
+  }
+
+  .drop-down-nav {
+    @apply w-40 h-60 z-50 xxs:ml-48 ring-amber-500 bg-red-500 grid justify-items-center
+    gap-5 mt-2 xs:ml-80 absolute rounded-xl sm:hidden;
+  }
+
+  .drop-down-btn {
+    @apply rounded-lg transform mx-2 px-10 delay-100 bg-white font-karla font-semibold hover:ring-2
+    hover:ring-amber-500 text-center text-amber-500;
+  }
+  .nav-bar {
+    @apply bg-amber-500 rounded-b-xl p-3 items-center
+    flex m-auto font-karla text-lg text-white border-b-4 border-red-500;
+  }
+
+  .products-list {
+    @apply grid grid-cols-1 gap-10 mt-14 mb-16 justify-items-center
+    sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+  }
+
+  .product {
+    @apply shadow-lg transform hover:-translate-y-2 font-karla bg-gradient-to-br from-amber-400
+    to-red-400 rounded-2xl  w-60 h-96 delay-100 duration-100 hover:ring-4 ring-2 ring-red-500;
+  }
+
+  .paging {
+    @apply justify-items-center bg-amber-500 rounded-xl px-2 ml-5 text-white font-karla font-semibold;
+  }
+}
+
+@layer utilities {
+  /* Add tailwind utilities here */
+}

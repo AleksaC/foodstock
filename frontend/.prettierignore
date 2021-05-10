@@ -1,0 +1,6 @@
+/public
+/build
+/amplify
+/.vscode
+/src/graphql
+package-*.json

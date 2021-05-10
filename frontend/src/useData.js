@@ -5,7 +5,7 @@
 // const useData = (id) => {
 //     const [products , setProducts] = useState([]);
 //     const [loading , setLoading] = useState(true);
-        
+
 //     async function fetchProduct() {
 //         try {
 //             setLoading(true);
@@ -13,16 +13,16 @@
 //             const produ = productsData.data.getProduct;
 //             setProducts(produ);
 //             setLoading(false);
-//         } 
-          
-//         catch (err) { 
-//             alert(err.status); 
+//         }
+
+//         catch (err) {
+//             alert(err.status);
 //         }
 
 //     useEffect( () => {
 //         fetchProduct();
 //     } , [id])
-    
+
 //     return {products , loading};
 // }
 
