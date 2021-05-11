@@ -13,13 +13,14 @@ from selenium.webdriver.support import expected_conditions as cond
 from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 from product import Product
 
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", False)
+
 
 def scrape_categories(url, driver):
     driver.get(url)
 
     wait = WebDriverWait(driver, 10)
-    
+
     product_categories = wait.until(cond.presence_of_all_elements_located((By.CLASS_NAME, "category-item")))
     urls_list = []
     category_names = []
@@ -43,7 +44,7 @@ def scrape_categories(url, driver):
         else:
             current_urls = [item.find_element_by_css_selector("a").get_attribute("href") for item in small_category]
             names = [item.find_element_by_css_selector("a").get_attribute("textContent") for item in small_category]
-        
+
         urls_list.append(current_urls)
         category_names.append(names)
 
@@ -55,7 +56,7 @@ def scrape_categories(url, driver):
 def scrape_subcategory(url, driver, category_name, batch_size = 25):
     """
     Scrapes the products of the given subcategory, and writes the result to a JSON file
-    in batches of batch_size size. 
+    in batches of batch_size size.
     """
 
     counter = 0
@@ -69,7 +70,7 @@ def scrape_subcategory(url, driver, category_name, batch_size = 25):
         adult_buttons = WebDriverWait(driver, 5).until(cond.presence_of_element_located((By.CLASS_NAME, "adult-buttons")))
         verify_link = adult_buttons.find_elements_by_css_selector("a")[0]
         verify_link.click()
-    
+
     except (NoSuchElementException, TimeoutException) as e:
         pass
 
@@ -106,7 +107,7 @@ def scrape_subcategory(url, driver, category_name, batch_size = 25):
             print("Associated URL: {}".format(product_url))
             print(e, end = "\n")
             traceback.print_tb(e.__traceback__)
-    
+
     if len(product_objects) > 0:
         print("Writing batch {} for category {} to output JSON.".format(counter + 1, category_name))
         write_batch(product_objects, category_name, counter)
@@ -119,7 +120,7 @@ def scrape_subcategory(url, driver, category_name, batch_size = 25):
     print("Time spent scraping: {}".format(end - start))
 
     filepath = os.path.join(os.environ["JSON_PATH"], "{}.json".format(category_name))
- 
+
     print("Category {} successfully written to a JSON file.".format(category_name))
     print()
 
@@ -160,7 +161,7 @@ def scrape_object(url, driver, category_name):
         price_info = {"discounted_price": current_price.split()[0], "old_price": old_price.split()[0]}
     except Exception as e:
         price_info = {"current_price": current_price.split()[0]}
-    
+
     res.price_info = price_info
 
     # Discount info, if it exists
@@ -216,10 +217,10 @@ TODO: For now, each batch is written to a seperate file.
 """
 def write_batch(product_objects, category_name, counter):
     json_path = os.environ["JSON_PATH"]
-    
+
     if json_path == "":
         filepath = r"{}_{}.json".format(category_name, counter)
-    
+
     else:
         filepath = r"{}\{}_{}.json".format(os.environ["JSON_PATH"], category_name, counter)
 
@@ -228,9 +229,8 @@ def write_batch(product_objects, category_name, counter):
 
 def main(event, context):
     options = Options()
-    # options.headless = True
 
-    binary_location = "/opt/bin/headless-chromium"
+    binary_location = "/opt/bin/chromium"
 
     options.binary_location = binary_location
 
@@ -244,7 +244,7 @@ def main(event, context):
     chromedriver_location = "/opt/bin/chromedriver"
     driver = webdriver.Chrome(chromedriver_location, options = options)
 
-    driver.set_page_load_timeout(10) 
+    driver.set_page_load_timeout(10)
 
     if DEBUG:
         driver.get("https://www.google.com/")

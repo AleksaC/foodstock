@@ -11,13 +11,13 @@ layers:
     path: selenium
     compatibleRuntimes:
       - "python3.8"
-  
+
   chromedriver:
     path: chromedriver
     description: chrome driver layer
     compatibleRuntimes:
       - "python3.8"
-      
+
 resources:
   Outputs:
     SeleniumLayerExport:
